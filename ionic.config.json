@@ -1,0 +1,7 @@
+{
+  "name": "cogniview-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
