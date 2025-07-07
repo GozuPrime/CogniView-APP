@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background: #1a237e;">
+    <ion-title class="ion-text-center" style="color: white;">
+      Registro de Paciente
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" style="background-color: #f5f5f5;">
+
+  <div style="text-align: center; margin-top: 30px;">
+    <img src="assets/img/brain-icon.png" alt="Icono Paciente" width="90" style="margin-bottom: 20px;" />
+    <h2 style="color: #1a237e;">Nuevo Paciente</h2>
+    <p style="color: #616161; font-size: 15px;">
+      Complete los datos para registrar al paciente
+    </p>
+  </div>
+
+  <ion-list lines="none" style="margin-top: 30px;">
+    <ion-item>
+      <ion-label position="floating" style="color: #1a237e;">Nombres</ion-label>
+      <ion-input type="text" placeholder="Ej: Juan Carlos"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" style="color: #1a237e;">Apellidos</ion-label>
+      <ion-input type="text" placeholder="Ej: Pérez Gonzales"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" style="color: #1a237e;">DNI</ion-label>
+      <ion-input type="number" placeholder="Ej: 12345678"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" style="--background: #26a69a; color: white; margin-top: 30px;">
+      Registrar Paciente
+    </ion-button>
+  </ion-list>
+
+</ion-content>

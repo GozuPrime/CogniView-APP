@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background: #ffffff; border-bottom: 1px solid #dcdcdc;">
+    <ion-title class="ion-text-center" style="color: #263238;">
+      Captura para Análisis
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" style="background-color: #fafafa;">
+
+  <div style="margin-top: 20px; text-align: center;">
+    <h2 style="color: #263238; font-size: 20px; margin-bottom: 10px;">
+      Captura de Imagen del Paciente
+    </h2>
+    <p style="font-size: 14px; color: #757575;">
+      Usa la cámara para obtener una imagen que será analizada por el modelo de IA entrenada
+    </p>
+  </div>
+
+  <!-- Imagen previa (puedes usar binding más adelante para mostrarla) -->
+  <div style="text-align: center; margin-top: 30px;">
+    <img src="assets/img/preview-placeholder.png" alt="Imagen previa" style="width: 200px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);" />
+  </div>
+
+  <!-- Botón para capturar imagen -->
+  <ion-button expand="block" style="--background: #42a5f5; color: white; margin-top: 30px; border-radius: 6px;">
+    📷 Capturar Imagen 📷
+  </ion-button>
+
+  <!-- Botón para analizar imagen -->
+  <ion-button expand="block" style="--background: #26a69a; color: white; margin-top: 15px; border-radius: 6px;">
+    🧠 Analizar Imagen 🧠
+  </ion-button>
+
+</ion-content>
