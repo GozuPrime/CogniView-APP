@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar style="--background: #ffffff; border-bottom: 1px solid #dcdcdc;">
     <ion-title class="ion-text-center" style="color: #263238;">
-      Registro de Paciente
+      Historial de Pacientes
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,32 +10,38 @@
 
   <div style="margin-top: 20px;">
     <h2 style="color: #263238; font-size: 20px; text-align: center; margin-bottom: 10px;">
-      Nuevo Paciente
+      Análisis Recientes
     </h2>
     <p style="text-align: center; font-size: 14px; color: #757575;">
-      Completa los datos del paciente para su registro
+      Lista de pacientes y sus evaluaciones anteriores
     </p>
   </div>
 
   <ion-list lines="inset" style="margin-top: 25px;">
-    <ion-item>
-      <ion-label position="floating" style="color: #263238;">Nombres</ion-label>
-      <ion-input type="text" placeholder="Ej: Ana María"></ion-input>
+    <ion-item button detail>
+      <ion-label>
+        <h3 style="color: #37474f;">Juan Pérez</h3>
+        <p style="color: #616161;">Último análisis: 05/07/2025</p>
+      </ion-label>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating" style="color: #263238;">Apellidos</ion-label>
-      <ion-input type="text" placeholder="Ej: Torres Valle"></ion-input>
+    <ion-item button detail>
+      <ion-label>
+        <h3 style="color: #37474f;">María López</h3>
+        <p style="color: #616161;">Último análisis: 01/07/2025</p>
+      </ion-label>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating" style="color: #263238;">DNI</ion-label>
-      <ion-input type="number" placeholder="Ej: 12345678"></ion-input>
+    <ion-item button detail>
+      <ion-label>
+        <h3 style="color: #37474f;">Carlos Sánchez</h3>
+        <p style="color: #616161;">Último análisis: 28/06/2025</p>
+      </ion-label>
     </ion-item>
   </ion-list>
 
   <ion-button expand="block" style="--background: #26a69a; color: white; margin-top: 40px; border-radius: 6px;">
-    Registrar Paciente
+    + Crear Nuevo Paciente
   </ion-button>
 
 </ion-content>
