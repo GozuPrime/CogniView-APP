@@ -1,0 +1,12 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    @if(pathValid()){
+    <ion-buttons slot="start">
+      <ion-button fill="clear" [routerLink]="path()" style="background: rgba(0, 0, 0, 0.5);">
+        <ion-icon name="arrow-back-outline" slot="icon-only" style="color: #263238; font-size: 22px;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    }
+    <ion-title>{{title()}}</ion-title>
+  </ion-toolbar>
+</ion-header>

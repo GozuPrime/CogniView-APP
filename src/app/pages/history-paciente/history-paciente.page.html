@@ -1,63 +1,156 @@
-<<<<<<< HEAD
-<ion-header [translucent]="true" mode="ios">
-  <ion-toolbar>
-    <ion-title class="ion-text-center">
-      Registro de Paciente
-=======
-<ion-header [translucent]="true">
-  <ion-toolbar style="--background: #ffffff; border-bottom: 1px solid #dcdcdc;">
-    <ion-title class="ion-text-center" style="color: #263238;">
-      Historial de Pacientes
->>>>>>> main
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header title="Historial de Pacientes" />
 
 <ion-content [fullscreen]="true" class="ion-padding">
 
-<<<<<<< HEAD
+  <!-- ITEMS DE PRUEBAS -->
+  <ion-list [inset]="true" mode="ios">
+    <ion-item-sliding>
+      <ion-item [button]="true">
+        <ion-avatar aria-hidden="true" slot="start">
+          <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-label>Rick Astley</ion-label>
+      </ion-item>
+      <ion-item-options slot="end">
+        <ion-item-option color="warning">
+          <ion-icon slot="icon-only" name="pin"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="tertiary">
+          <ion-icon slot="icon-only" name="share"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="danger" expandable="true">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
 
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button>
-    </ion-fab-button>
-  </ion-fab>
+    <ion-item-sliding>
+      <ion-item [button]="true">
+        <ion-avatar aria-hidden="true" slot="start">
+          <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-label>Leeroy Jenkins</ion-label>
+      </ion-item>
+      <ion-item-options slot="end">
+        <ion-item-option color="warning">
+          <ion-icon slot="icon-only" name="pin"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="tertiary">
+          <ion-icon slot="icon-only" name="share"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="danger" expandable="true">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
 
-=======
-  <div style="margin-top: 20px;">
-    <h2 style="color: #263238; font-size: 20px; text-align: center; margin-bottom: 10px;">
-      Análisis Recientes
-    </h2>
-    <p style="text-align: center; font-size: 14px; color: #757575;">
-      Lista de pacientes y sus evaluaciones anteriores
-    </p>
-  </div>
+    <ion-item-sliding>
+      <ion-item [button]="true">
+        <ion-avatar aria-hidden="true" slot="start">
+          <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-label>Ionitron</ion-label>
+      </ion-item>
+      <ion-item-options slot="end">
+        <ion-item-option color="warning">
+          <ion-icon slot="icon-only" name="pin"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="tertiary">
+          <ion-icon slot="icon-only" name="share"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="danger" expandable="true">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
 
-  <ion-list lines="inset" style="margin-top: 25px;">
-    <ion-item button detail>
-      <ion-label>
-        <h3 style="color: #37474f;">Juan Pérez</h3>
-        <p style="color: #616161;">Último análisis: 05/07/2025</p>
-      </ion-label>
-    </ion-item>
+    <ion-item-sliding>
+      <ion-item [button]="true">
+        <ion-avatar aria-hidden="true" slot="start">
+          <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-label>Wall-E</ion-label>
+      </ion-item>
+      <ion-item-options slot="end">
+        <ion-item-option color="warning">
+          <ion-icon slot="icon-only" name="pin"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="tertiary">
+          <ion-icon slot="icon-only" name="share"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="danger" expandable="true">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
 
-    <ion-item button detail>
-      <ion-label>
-        <h3 style="color: #37474f;">María López</h3>
-        <p style="color: #616161;">Último análisis: 01/07/2025</p>
-      </ion-label>
-    </ion-item>
+    <ion-item-sliding>
+      <ion-item [button]="true">
+        <ion-avatar aria-hidden="true" slot="start">
+          <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-label>Cortana</ion-label>
+      </ion-item>
+      <ion-item-options slot="end">
+        <ion-item-option color="warning">
+          <ion-icon slot="icon-only" name="pin"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="tertiary">
+          <ion-icon slot="icon-only" name="share"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="danger" expandable="true">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
 
-    <ion-item button detail>
-      <ion-label>
-        <h3 style="color: #37474f;">Carlos Sánchez</h3>
-        <p style="color: #616161;">Último análisis: 28/06/2025</p>
-      </ion-label>
-    </ion-item>
+    <ion-item-sliding>
+      <ion-item [button]="true">
+        <ion-avatar aria-hidden="true" slot="start">
+          <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-label>Bender</ion-label>
+      </ion-item>
+      <ion-item-options slot="end">
+        <ion-item-option color="warning">
+          <ion-icon slot="icon-only" name="pin"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="tertiary">
+          <ion-icon slot="icon-only" name="share"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="danger" expandable="true">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding>
+      <ion-item [button]="true">
+        <ion-avatar aria-hidden="true" slot="start">
+          <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-label>BB-8</ion-label>
+      </ion-item>
+      <ion-item-options slot="end">
+        <ion-item-option color="warning">
+          <ion-icon slot="icon-only" name="pin"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="tertiary">
+          <ion-icon slot="icon-only" name="share"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="danger" expandable="true">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 
-  <ion-button expand="block" style="--background: #26a69a; color: white; margin-top: 40px; border-radius: 6px;">
-    + Crear Nuevo Paciente
-  </ion-button>
->>>>>>> main
+
+  <!-- BOTON PARA DIRIGIRTE A LA INTERFAZ DE CREAR PACIENTE -->
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button routerLink="/home/paciente">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
