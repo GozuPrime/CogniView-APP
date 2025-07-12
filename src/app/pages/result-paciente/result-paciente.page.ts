@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonList, IonItem, IonLabel, IonCard, IonCardContent, IonCardHeader, IonCardTitle } from '@ionic/angular/standalone';
 import { HeaderComponent } from "src/app/shared/components/header/header.component";
-
 @Component({
   selector: 'app-result-paciente',
   templateUrl: './result-paciente.page.html',

@@ -24,7 +24,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/paciente/paciente.page').then(m => m.PacientePage)
   },
   {
-    path: 'capture-ia',
+    path: 'capture-ia/:id',
     loadComponent: () => import('./pages/capture-ia/capture-ia.page').then(m => m.CaptureIAPage)
   },
   {
