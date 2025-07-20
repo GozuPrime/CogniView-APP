@@ -1,5 +1,5 @@
-<form action="" method="post">
-  <ion-input label="Correo Electronico" label-placement="floating" fill="solid" placeholder="Correo Electronico ..."></ion-input>
-  <ion-input label="Contraseña" label-placement="floating" fill="solid" placeholder="Contraseña ..."></ion-input>
+<form enctype="multipart/form-data" [formGroup]="formulario" method="post" (submit)="submitForm()">
+  <ion-input label="Correo Electronico" label-placement="floating" fill="solid" formControlName="email" placeholder="Correo Electronico ..."></ion-input>
+  <ion-input label="Contraseña" label-placement="floating" fill="solid" formControlName="password" placeholder="Contraseña ..."></ion-input>
   <app-button type="submit" name="Ingresar" />
 </form>

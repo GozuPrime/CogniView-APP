@@ -4,7 +4,7 @@
       <div class="subtitle">
         <app-subtitle title="Bienvenido(a)" description="Plataforma para el monitoreo clínico en salud mental" />
       </div>
-      <app-form-login />
+      <app-form-login (formAuth)="autenticacion($event)" />
     </app-card>
   </div>
 </div>
