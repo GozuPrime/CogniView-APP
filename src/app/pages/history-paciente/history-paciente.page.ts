@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonFab, IonFabButton, IonIcon, IonItemOption, IonItemOptions, IonLabel, IonItemSliding, IonItem, IonList } from '@ionic/angular/standalone';
@@ -6,6 +6,7 @@ import { HeaderComponent } from "src/app/shared/components/header/header.compone
 import { addIcons } from 'ionicons';
 import { add, trash ,createOutline,cameraOutline} from 'ionicons/icons';
 import { RouterLink } from '@angular/router';
+import { Paciente } from 'src/app/core/models/paciente/paciente';
 
 @Component({
   selector: 'app-history-paciente',
@@ -22,5 +23,15 @@ export class HistoryPacientePage implements OnInit {
 
   ngOnInit() {
   }
+
+  listPaciente = signal<Paciente[]>([
+    {
+      idPaciente: '1', 
+      idUsuario: '12',
+      nombre: 'Carlos',
+      apellido: 'Vigo',
+      dni: '14856273',
+    }
+  ])
 
 }
