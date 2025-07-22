@@ -1,7 +1,8 @@
 import { Component, inject, OnInit, output } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormControl, FormGroup, Validator, Validators} from '@angular/forms';
-import { IonInput } from "@ionic/angular/standalone";
+import { ReactiveFormsModule, FormBuilder, FormControl, FormGroup, Validator, Validators } from '@angular/forms';
+import { IonInput, AlertController } from "@ionic/angular/standalone";
 import { Paciente } from 'src/app/core/models/paciente/paciente';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { ButtonComponent } from "src/app/shared/components/button/button.component";
 
 @Component({
@@ -10,12 +11,12 @@ import { ButtonComponent } from "src/app/shared/components/button/button.compone
   styleUrls: ['./form-paciente.component.scss'],
   imports: [IonInput, ButtonComponent, ReactiveFormsModule],
 })
-export class FormPacienteComponent  implements OnInit {
+export class FormPacienteComponent implements OnInit {
   formAuth = output<Paciente>()
-
+  private alertService = inject(AlertService)
   formulario !: FormGroup
   form = inject(FormBuilder)
-  constructor() { 
+  constructor() {
     this.formulario = this.form.group({
       nombre: new FormControl('', [Validators.required]),
       apellido: new FormControl('', [Validators.required]),
@@ -23,10 +24,10 @@ export class FormPacienteComponent  implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  submitForm() {
-    if(this.formulario.valid){
+  async submitForm() {
+    if (this.formulario.valid) {
       //alert("Formulario enviado correctamente");
       const pacienteData: Paciente = {
         idPaciente: this.formulario.controls['idPaciente']?.value || 0,
@@ -36,9 +37,8 @@ export class FormPacienteComponent  implements OnInit {
         dni: this.formulario.controls['dni'].value
       };
       this.formAuth.emit(pacienteData);
-    }else{
-      alert("Por favor, complete todos los campos requeridos.");
+    } else {
+      this.alertService.AlertError('Error', 'Completar todos los campos del formulario del paciente.')
     }
   }
-
 }
