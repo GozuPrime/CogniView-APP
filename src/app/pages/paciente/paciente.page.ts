@@ -3,6 +3,7 @@ import { IonContent } from '@ionic/angular/standalone';
 import { HeaderComponent } from "src/app/shared/components/header/header.component";
 import { CardComponent } from "src/app/shared/components/card/card.component";
 import { FormPacienteComponent } from "src/app/components/paciente/form-paciente/form-paciente.component";
+import { PacienteResponse } from 'src/app/core/models/paciente/paciente-response';
 
 @Component({
   selector: 'app-paciente',
@@ -16,6 +17,10 @@ export class PacientePage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  crearpaciente(paciente: PacienteResponse) {
+    console.log()
   }
 
 }

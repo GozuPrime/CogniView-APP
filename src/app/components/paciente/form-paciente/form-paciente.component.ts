@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, output } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormControl, FormGroup, Validator, Validators } from '@angular/forms';
-import { IonInput, AlertController } from "@ionic/angular/standalone";
-import { Paciente } from 'src/app/core/models/paciente/paciente';
+import { ReactiveFormsModule, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { IonInput } from "@ionic/angular/standalone";
+import { PacienteResponse } from 'src/app/core/models/paciente/paciente-response';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { ButtonComponent } from "src/app/shared/components/button/button.component";
 
@@ -12,7 +12,7 @@ import { ButtonComponent } from "src/app/shared/components/button/button.compone
   imports: [IonInput, ButtonComponent, ReactiveFormsModule],
 })
 export class FormPacienteComponent implements OnInit {
-  formAuth = output<Paciente>()
+  formAuth = output<PacienteResponse>()
   private alertService = inject(AlertService)
   formulario !: FormGroup
   form = inject(FormBuilder)
@@ -29,9 +29,7 @@ export class FormPacienteComponent implements OnInit {
   async submitForm() {
     if (this.formulario.valid) {
       //alert("Formulario enviado correctamente");
-      const pacienteData: Paciente = {
-        idPaciente: this.formulario.controls['idPaciente']?.value || 0,
-        idUsuario: this.formulario.controls['idUsuario']?.value || 0,
+      const pacienteData: PacienteResponse = {
         nombre: this.formulario.controls['nombre'].value,
         apellido: this.formulario.controls['apellido'].value,
         dni: this.formulario.controls['dni'].value

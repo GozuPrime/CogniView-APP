@@ -1,9 +1,12 @@
 import { Routes } from '@angular/router';
+import { notAuthGuard } from './core/guard/not-auth.guard';
+import { authGuard } from './core/guard/auth.guard';
 
 export const routes: Routes = [
   {
     path: 'login',
-    loadComponent: () => import('./pages/auth/login/login.page').then(m => m.LoginPage)
+    loadComponent: () => import('./pages/auth/login/login.page').then(m => m.LoginPage),
+    canActivate:[notAuthGuard]
   },
   {
     path: 'home',
@@ -17,15 +20,18 @@ export const routes: Routes = [
         path: 'result-paciente',
         loadComponent: () => import('./pages/result-paciente/result-paciente.page').then(m => m.ResultPacientePage)
       },
-    ]
+    ],
+    canActivate:[authGuard]
   },
   {
     path: 'paciente',
-    loadComponent: () => import('./pages/paciente/paciente.page').then(m => m.PacientePage)
+    loadComponent: () => import('./pages/paciente/paciente.page').then(m => m.PacientePage),
+    canActivate:[authGuard]
   },
   {
     path: 'capture-ia/:id',
-    loadComponent: () => import('./pages/capture-ia/capture-ia.page').then(m => m.CaptureIAPage)
+    loadComponent: () => import('./pages/capture-ia/capture-ia.page').then(m => m.CaptureIAPage),
+    canActivate:[authGuard]
   },
   {
     path: '',
