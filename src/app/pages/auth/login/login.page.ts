@@ -6,6 +6,9 @@ import { SubtitleComponent } from "src/app/shared/components/subtitle/subtitle.c
 import { FormLoginComponent } from "src/app/components/auth/form-login/form-login.component";
 import { Login } from 'src/app/core/models/auth/login';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { ResponseServer } from 'src/app/core/models/response-server';
+import { StorageService } from 'src/app/core/services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +18,12 @@ import { Router } from '@angular/router';
   imports: [CommonModule, FormsModule, CardComponent, SubtitleComponent, FormLoginComponent]
 })
 export class LoginPage implements OnInit {
-  private router = inject(Router)
+  router = inject(Router)
+
+  authService = inject(AuthService)
+
+  stogareService = inject(StorageService)
+
   constructor() { }
 
   ngOnInit() {
@@ -23,6 +31,15 @@ export class LoginPage implements OnInit {
 
   autenticacion(data: Login) {
     console.log(data);
-    this.router.navigate(['/home/history-paciente']);
+    this.authService.login(data).subscribe({
+      next(response:ResponseServer) {
+          if(response.exito){
+            this.stogareService.
+            this.router.navigate(['/home/history-paciente']);
+          }
+      },
+    })
+    
   }
+
 }

@@ -1,6 +1,6 @@
 export interface ResponseServer {
     exito: boolean
     mensajeError: string
-    _token: string
+    _token?: string
     
 }
