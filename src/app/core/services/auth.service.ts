@@ -13,10 +13,8 @@ import { ResponseServer } from '../models/response-server';
 export class AuthService {
 
   private url = environment.apiCogniView
-  
-  https = inject(HttpClient)
-
-  storageServices = inject(StorageService)
+  private https = inject(HttpClient)
+  private storageServices = inject(StorageService)
 
   login(datos:Login):Observable<ResponseServer>{
     return this.https.post<ResponseServer>(this.url+'auth/',datos)
