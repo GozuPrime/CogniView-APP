@@ -6,9 +6,10 @@ import { SubtitleComponent } from "src/app/shared/components/subtitle/subtitle.c
 import { FormLoginComponent } from "src/app/components/auth/form-login/form-login.component";
 import { Login } from 'src/app/core/models/auth/login';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth.service';
 import { ResponseServer } from 'src/app/core/models/response-server';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { StorageService } from 'src/app/core/services/storage.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -19,11 +20,9 @@ import { StorageService } from 'src/app/core/services/storage.service';
 })
 export class LoginPage implements OnInit {
   router = inject(Router)
-
-  authService = inject(AuthService)
-
-  stogareService = inject(StorageService)
-
+  authServices = inject(AuthService)
+  storageServices = inject(StorageService)
+  alertServices = inject(AlertService)
   constructor() { }
 
   ngOnInit() {
@@ -34,12 +33,20 @@ export class LoginPage implements OnInit {
     this.authService.login(data).subscribe({
       next(response:ResponseServer) {
           if(response.exito){
-            this.stogareService.set('tokenPaciente', response._token);
+            this.stogareService.
             this.router.navigate(['/home/history-paciente']);
           }
       },
     })
-    
+    // next(response: ResponseServer) {
+    //   if (response.exito) {
+
+    //     this.storageServices.setStorage('tokenPaciente', response._token)
+    //     this.router.navigate(['/home/history-paciente']);
+    //   }
+
+    // },
+
   }
 
 }
