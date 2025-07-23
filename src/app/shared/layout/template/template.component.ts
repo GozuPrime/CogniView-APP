@@ -7,7 +7,7 @@ import {
 } from '@ionic/angular/standalone';
 
 import { addIcons } from 'ionicons';
-import { library, playCircle, radio, search } from 'ionicons/icons';
+import { peopleOutline,clipboardOutline } from 'ionicons/icons';
 @Component({
   selector: 'app-template',
   templateUrl: './template.component.html',
@@ -17,7 +17,7 @@ import { library, playCircle, radio, search } from 'ionicons/icons';
 export class TemplateComponent {
 
   constructor() { 
-    addIcons({ library, playCircle, radio, search });
+    addIcons({ peopleOutline,clipboardOutline });
   }
 
 
