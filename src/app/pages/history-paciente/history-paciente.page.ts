@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonFab, IonFabButton, IonIcon, IonItemOption, IonItemOptions, IonLabel, IonItemSliding, IonItem, IonList, IonAvatar } from '@ionic/angular/standalone';
@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
 import { Paciente } from 'src/app/core/models/paciente/paciente';
 import { PacientesService } from 'src/app/core/services/pacientes.service';
 import { ResponseServer } from 'src/app/core/models/response-server';
+import { AlertService } from 'src/app/core/services/alert.service';
 
 @Component({
   selector: 'app-history-paciente',
@@ -17,24 +18,46 @@ import { ResponseServer } from 'src/app/core/models/response-server';
   standalone: true,
   imports: [IonContent, IonIcon, RouterLink, CommonModule, FormsModule, IonItemOption, IonItemOptions, IonFab, IonFabButton, HeaderComponent, IonLabel, IonItemSliding, IonItem, IonList, IonAvatar]
 })
-export class HistoryPacientePage implements OnInit {
+export class HistoryPacientePage implements OnInit, OnDestroy {
 
   listPacientes = signal<Paciente[]>([])
 
   private pacienteServices = inject(PacientesService)
+  private alertServices = inject(AlertService)
 
   constructor() {
     addIcons({ add, trash, createOutline, cameraOutline });
   }
 
+  ionViewWillEnter() {
+    this.loadPacientes()
+  }
+
   ngOnInit() {
-    this.pacienteServices.pacientes_sellst().subscribe((event:ResponseServer)=>{
-      if(event.exito){
+    this.loadPacientes()
+  }
+
+  ngOnDestroy(): void {
+    this.listPacientes.set([])
+  }
+
+  loadPacientes() {
+    this.pacienteServices.pacientes_sellst().subscribe((event: ResponseServer) => {
+      if (event.exito) {
         this.listPacientes.set(event._pacientes as Paciente[])
       }
     })
   }
 
-  
+  deletePaciente(paciente: Paciente) {
+    this.pacienteServices.paciente_dlt(paciente.idPaciente).subscribe((event: ResponseServer) => {
+      if (event.exito) {
+        const newList = this.listPacientes().filter(element => element.idPaciente !== paciente.idPaciente)
+        this.listPacientes.set(newList)
+      } else {
+        this.alertServices.AlertError('Error', event.mensajeError)
+      }
+    })
+  }
 
 }

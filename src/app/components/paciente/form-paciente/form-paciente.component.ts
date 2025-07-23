@@ -22,13 +22,14 @@ export class FormPacienteComponent implements OnInit {
       apellido: new FormControl('', [Validators.required]),
       dni: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
     });
+    this.formulario.reset()
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+  }
 
   async submitForm() {
     if (this.formulario.valid) {
-      //alert("Formulario enviado correctamente");
       const pacienteData: PacienteResponse = {
         nombre: this.formulario.controls['nombre'].value,
         apellido: this.formulario.controls['apellido'].value,
