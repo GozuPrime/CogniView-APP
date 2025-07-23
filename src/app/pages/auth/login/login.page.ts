@@ -34,7 +34,7 @@ export class LoginPage implements OnInit {
     this.authService.login(data).subscribe({
       next(response:ResponseServer) {
           if(response.exito){
-            this.stogareService.
+            this.stogareService.set('tokenPaciente', response._token);
             this.router.navigate(['/home/history-paciente']);
           }
       },
