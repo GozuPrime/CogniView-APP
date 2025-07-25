@@ -1,22 +1,30 @@
-import { AfterViewInit, Component, effect, inject, input, OnInit, output } from '@angular/core';
+import { Component, inject, Input, input } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { IonInput } from "@ionic/angular/standalone";
+import { IonInput, IonContent } from "@ionic/angular/standalone";
 import { Paciente } from 'src/app/core/models/paciente/paciente';
 import { PacienteResponse } from 'src/app/core/models/paciente/paciente-response';
+import { ResponseServer } from 'src/app/core/models/response-server';
 import { AlertService } from 'src/app/core/services/alert.service';
+import { PacientesService } from 'src/app/core/services/pacientes.service';
+import { UtilsService } from 'src/app/core/services/utils.service';
 import { ButtonComponent } from "src/app/shared/components/button/button.component";
+import { HeaderComponent } from "src/app/shared/components/header/header.component";
 
 @Component({
   selector: 'app-form-paciente',
   templateUrl: './form-paciente.component.html',
   styleUrls: ['./form-paciente.component.scss'],
-  imports: [IonInput, ButtonComponent, ReactiveFormsModule],
+  imports: [IonInput, ButtonComponent, ReactiveFormsModule, HeaderComponent, IonContent],
 })
-export class FormPacienteComponent   {
+export class FormPacienteComponent {
   private alertService = inject(AlertService)
-  formAuth = output<PacienteResponse>()
-  idPaciente = input.required<string>()
-  paciente = input<Paciente | null>()
+  private pacienteService = inject(PacientesService)
+  private utilsServices = inject(UtilsService)
+
+  @Input() pacientes!:Paciente
+  // formAuth = output<PacienteResponse>()
+  // idPaciente = input.required<string>()
+  // paciente = input.required<Paciente>()
 
   formulario !: FormGroup
   form = inject(FormBuilder)
@@ -27,10 +35,15 @@ export class FormPacienteComponent   {
       dni: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
     });
     this.formulario.reset()
+
+    console.log(this.pacientes);
+
   }
 
-  ionViewDidEnter() {
-    this.formulario.controls['nombre'].setValue(this.idPaciente())
+  closeModal(event: boolean) {
+    if (event) {
+
+    }
   }
 
   async submitForm() {
@@ -40,7 +53,17 @@ export class FormPacienteComponent   {
         apellido: this.formulario.controls['apellido'].value,
         dni: this.formulario.controls['dni'].value
       };
-      this.formAuth.emit(pacienteData);
+
+      this.pacienteService.pacientes_inst(pacienteData).subscribe((response: ResponseServer) => {
+        if (response.exito) {
+          console.log(response);
+
+          this.utilsServices.dismissModal({ success: true })
+        } else {
+          this.alertService.AlertError('Error', response.mensajeError)
+        }
+      })
+
     } else {
       this.alertService.AlertError('Error', 'Completar todos los campos del formulario del paciente.')
     }

@@ -4,7 +4,7 @@
 
   <!-- ITEMS DE PRUEBAS -->
   <ion-list [inset]="true" mode="ios" class="item-list">
-  @for (item of listPacientes(); track $index) {
+    @for (item of listPacientes(); track $index) {
     <ion-item-sliding>
       <ion-item [button]="true">
         <ion-avatar aria-hidden="true" slot="start">
@@ -16,7 +16,7 @@
         <ion-item-option color="warning" routerLink="/capture-ia/{{item.idPaciente}}">
           <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
         </ion-item-option>
-        <ion-item-option color="tertiary" routerLink="/paciente/{{item.idPaciente}}/edit">
+        <ion-item-option color="tertiary" (click)="addUpdPaciente(item)">
           <ion-icon slot="icon-only" name="create-outline"></ion-icon>
         </ion-item-option>
         <ion-item-option color="danger" (click)="deletePaciente(item)">
@@ -24,12 +24,13 @@
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
-  }
+    }
   </ion-list>
 
   <!-- BOTON PARA DIRIGIRTE A LA INTERFAZ DE CREAR PACIENTE -->
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button routerLink="/paciente" mode="ios">
+    <!-- routerLink="/paciente" -->
+    <ion-fab-button mode="ios" (click)="addUpdPaciente()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

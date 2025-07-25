@@ -2,11 +2,20 @@
   <ion-toolbar>
     @if(pathValid()){
     <ion-buttons slot="start">
-      <ion-button fill="clear" [routerLink]="path()" >
+      <ion-button fill="clear" [routerLink]="path()">
         <ion-icon name="arrow-back-outline" class="icon-back" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
     }
     <ion-title>{{title()}}</ion-title>
+
+    @if(isModal()){
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="closeButton()">
+        <ion-icon name="close-outline" class="icon-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    }
+
   </ion-toolbar>
 </ion-header>
