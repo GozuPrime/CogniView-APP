@@ -32,6 +32,8 @@ export class LoginPage implements OnInit {
       if (event.exito) {
         this.storageServices.setStorage('tokenPaciente', event._token);
         this.router.navigate(['/home/history-paciente']);
+      } else {
+        this.alertServices.AlertError('Error', event.mensajeError)
       }
     })
   }

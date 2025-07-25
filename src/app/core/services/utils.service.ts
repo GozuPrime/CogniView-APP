@@ -22,6 +22,8 @@ export class UtilsService {
   };
 
 
+  /* ==== IMPLEMENTACION DEL MODAL ==== */
+
   async presentModal(options: ModalOptions) {
     const modal = await this.modalCtrl.create(options)
     await modal.present()
@@ -30,6 +32,6 @@ export class UtilsService {
   }
 
   dismissModal(data?: any) {
-    return this.modalCtrl.dismiss()
+    return this.modalCtrl.dismiss(data)
   }
 }

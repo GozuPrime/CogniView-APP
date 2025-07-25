@@ -6,19 +6,20 @@ import { IonContent, IonFab, IonFabButton, IonIcon, IonItemOption, IonItemOption
 import { HeaderComponent } from "src/app/shared/components/header/header.component";
 import { addIcons } from 'ionicons';
 import { add, trash, createOutline, cameraOutline } from 'ionicons/icons';
-import { RouterLink } from '@angular/router';
 import { PacientesService } from 'src/app/core/services/pacientes.service';
 import { ResponseServer } from 'src/app/core/models/response-server';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { UtilsService } from 'src/app/core/services/utils.service';
 import { FormPacienteComponent } from 'src/app/components/paciente/form-paciente/form-paciente.component';
+import { ModalController } from '@ionic/angular/standalone';
+import { FormCaptureIaComponent } from 'src/app/components/paciente/form-capture-ia/form-capture-ia.component';
 
 @Component({
   selector: 'app-history-paciente',
   templateUrl: './history-paciente.page.html',
   styleUrls: ['./history-paciente.page.scss'],
   standalone: true,
-  imports: [IonContent, IonIcon, RouterLink, CommonModule, FormsModule, IonItemOption, IonItemOptions, IonFab, IonFabButton, HeaderComponent, IonLabel, IonItemSliding, IonItem, IonList, IonAvatar]
+  imports: [IonContent, IonIcon,  CommonModule, FormsModule, IonItemOption, IonItemOptions, IonFab, IonFabButton, HeaderComponent, IonLabel, IonItemSliding, IonItem, IonList, IonAvatar]
 })
 export class HistoryPacientePage {
 
@@ -27,7 +28,7 @@ export class HistoryPacientePage {
   private pacienteServices = inject(PacientesService)
   private alertServices = inject(AlertService)
   private utilsServices = inject(UtilsService)
-
+  private modalController = inject(ModalController)
 
   constructor() {
     addIcons({ add, trash, createOutline, cameraOutline });
@@ -35,18 +36,6 @@ export class HistoryPacientePage {
 
   ionViewWillEnter() {
     this.loadPacientes();
-  }
-
-  addUpdPaciente(paciente?: Paciente) {
-    console.log('boton', paciente);
-
-    const data = this.utilsServices.presentModal({
-      component: FormPacienteComponent,
-      componentProps: { paciente }
-    })
-
-    console.log(data);
-
   }
 
   loadPacientes() {
@@ -57,15 +46,46 @@ export class HistoryPacientePage {
     })
   }
 
-  deletePaciente(paciente: Paciente) {
-    this.pacienteServices.paciente_dlt(paciente.idPaciente).subscribe((event: ResponseServer) => {
-      if (event.exito) {
-        const newList = this.listPacientes().filter(element => element.idPaciente !== paciente.idPaciente)
-        this.listPacientes.set(newList)
-      } else {
-        this.alertServices.AlertError('Error', event.mensajeError)
-      }
+  async analityImagen(paciente?: Paciente) {
+    const data = await this.utilsServices.presentModal({
+      component: FormCaptureIaComponent,
+      componentProps: { paciente }
     })
+
+    // if (data) {
+    //   const paciente = this.listPacientes()
+    //   this.listPacientes.set([...paciente, data.data[0]])
+    // }
+  }
+
+  async addUpdPaciente(paciente?: Paciente) {
+    const data = await this.utilsServices.presentModal({
+      component: FormPacienteComponent,
+      componentProps: { paciente }
+    })
+
+    if (data) {
+      const paciente = this.listPacientes()
+      this.listPacientes.set([...paciente, data.data[0]])
+    }
+  }
+
+  async deletePaciente(paciente: Paciente) {
+    const confirmed = await this.alertServices.AlertConfirm(
+      '¿Estás seguro?',
+      'Esta acción no se puede deshacer.'
+    );
+
+    if (confirmed) {
+      this.pacienteServices.paciente_dlt(paciente.idPaciente).subscribe((event: ResponseServer) => {
+        if (event.exito) {
+          const newList = this.listPacientes().filter(element => element.idPaciente !== paciente.idPaciente)
+          this.listPacientes.set(newList)
+        } else {
+          this.alertServices.AlertError('Error', event.mensajeError)
+        }
+      })
+    }
   }
 
 }

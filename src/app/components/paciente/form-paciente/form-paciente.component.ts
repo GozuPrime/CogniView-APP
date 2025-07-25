@@ -9,7 +9,6 @@ import { PacientesService } from 'src/app/core/services/pacientes.service';
 import { UtilsService } from 'src/app/core/services/utils.service';
 import { ButtonComponent } from "src/app/shared/components/button/button.component";
 import { HeaderComponent } from "src/app/shared/components/header/header.component";
-
 @Component({
   selector: 'app-form-paciente',
   templateUrl: './form-paciente.component.html',
@@ -21,7 +20,7 @@ export class FormPacienteComponent {
   private pacienteService = inject(PacientesService)
   private utilsServices = inject(UtilsService)
 
-  @Input() pacientes!:Paciente
+  @Input() paciente?: Paciente;
   // formAuth = output<PacienteResponse>()
   // idPaciente = input.required<string>()
   // paciente = input.required<Paciente>()
@@ -36,14 +35,9 @@ export class FormPacienteComponent {
     });
     this.formulario.reset()
 
-    console.log(this.pacientes);
+    console.log(this.paciente);
 
-  }
 
-  closeModal(event: boolean) {
-    if (event) {
-
-    }
   }
 
   async submitForm() {
@@ -58,7 +52,7 @@ export class FormPacienteComponent {
         if (response.exito) {
           console.log(response);
 
-          this.utilsServices.dismissModal({ success: true })
+          this.utilsServices.dismissModal({ data: response._paciente })
         } else {
           this.alertService.AlertError('Error', response.mensajeError)
         }

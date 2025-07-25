@@ -23,12 +23,6 @@ export const routes: Routes = [
     ],
     canActivate:[authGuard]
   },
-
-  {
-    path: 'capture-ia/:id',
-    loadComponent: () => import('./pages/capture-ia/capture-ia.page').then(m => m.CaptureIAPage),
-    canActivate:[authGuard]
-  },
   {
     path: '',
     redirectTo: 'login',
