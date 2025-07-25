@@ -18,7 +18,7 @@ import { AlertService } from 'src/app/core/services/alert.service';
   standalone: true,
   imports: [IonContent, IonIcon, RouterLink, CommonModule, FormsModule, IonItemOption, IonItemOptions, IonFab, IonFabButton, HeaderComponent, IonLabel, IonItemSliding, IonItem, IonList, IonAvatar]
 })
-export class HistoryPacientePage implements OnInit, OnDestroy {
+export class HistoryPacientePage {
 
   listPacientes = signal<Paciente[]>([])
 
@@ -30,15 +30,7 @@ export class HistoryPacientePage implements OnInit, OnDestroy {
   }
 
   ionViewWillEnter() {
-    this.loadPacientes()
-  }
-
-  ngOnInit() {
-    this.loadPacientes()
-  }
-
-  ngOnDestroy(): void {
-    this.listPacientes.set([])
+    this.loadPacientes();
   }
 
   loadPacientes() {

@@ -16,7 +16,7 @@
         <ion-item-option color="warning" routerLink="/capture-ia/{{item.idPaciente}}">
           <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
         </ion-item-option>
-        <ion-item-option color="tertiary">
+        <ion-item-option color="tertiary" routerLink="/paciente/{{item.idPaciente}}/edit">
           <ion-icon slot="icon-only" name="create-outline"></ion-icon>
         </ion-item-option>
         <ion-item-option color="danger" (click)="deletePaciente(item)">

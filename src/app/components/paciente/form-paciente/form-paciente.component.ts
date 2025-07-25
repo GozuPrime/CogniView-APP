@@ -1,6 +1,7 @@
-import { Component, inject, OnInit, output } from '@angular/core';
+import { AfterViewInit, Component, effect, inject, input, OnInit, output } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IonInput } from "@ionic/angular/standalone";
+import { Paciente } from 'src/app/core/models/paciente/paciente';
 import { PacienteResponse } from 'src/app/core/models/paciente/paciente-response';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { ButtonComponent } from "src/app/shared/components/button/button.component";
@@ -11,9 +12,12 @@ import { ButtonComponent } from "src/app/shared/components/button/button.compone
   styleUrls: ['./form-paciente.component.scss'],
   imports: [IonInput, ButtonComponent, ReactiveFormsModule],
 })
-export class FormPacienteComponent implements OnInit {
-  formAuth = output<PacienteResponse>()
+export class FormPacienteComponent   {
   private alertService = inject(AlertService)
+  formAuth = output<PacienteResponse>()
+  idPaciente = input.required<string>()
+  paciente = input<Paciente | null>()
+
   formulario !: FormGroup
   form = inject(FormBuilder)
   constructor() {
@@ -25,7 +29,8 @@ export class FormPacienteComponent implements OnInit {
     this.formulario.reset()
   }
 
-  ngOnInit() { 
+  ionViewDidEnter() {
+    this.formulario.controls['nombre'].setValue(this.idPaciente())
   }
 
   async submitForm() {
