@@ -2,25 +2,27 @@
 
 <ion-content [fullscreen]="true" class="ion-padding" style="background-color: #fafafa;">
 
-  <div style="margin-top: 20px; text-align: center;">
-    <h2 style="color: #263238; font-size: 20px; margin-bottom: 10px;">
-      Captura de Imagen del Paciente
-    </h2>
-    <p style="font-size: 14px; color: #757575;">
-      Usa la cámara para obtener una imagen que será analizada por el modelo de IA entrenada
-    </p>
-  </div>
+  <app-card>
+    <div style="margin-top: 20px; text-align: center;">
+      <h2 style="color: #263238; font-size: 20px; margin-bottom: 10px;">
+        Captura de Imagen del Paciente
+      </h2>
+      <p style="font-size: 14px; color: #757575;">
+        Usa la cámara para obtener una imagen que será analizada por el modelo de IA entrenada
+      </p>
+    </div>
 
-  <!-- Imagen previa (puedes usar binding más adelante para mostrarla) -->
-  <div style="text-align: center; margin-top: 30px;">
-    <img src="assets/img/preview-placeholder.png" alt="Imagen previa"
-      style="width: 200px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);" />
-  </div>
+    <!-- Imagen previa (puedes usar binding más adelante para mostrarla) -->
+    <div style="text-align: center; margin-top: 30px;">
+      <img src="assets/img/preview-placeholder.png" alt="Imagen previa"
+        style="width: 200px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);" />
+    </div>
 
-  <!-- Botón para capturar imagen -->
-  <app-button name="📷 Capturar Imagen 📷" type="buttom" />
+    <!-- Botón para capturar imagen -->
+    <app-button name="📷 Capturar Imagen 📷" type="buttom" (click)="openCamara()" />
 
-  <!-- Botón para analizar imagen -->
-   <app-button name="🧠 Analizar Imagen 🧠" type="buttom" />
+    <!-- Botón para analizar imagen -->
+    <app-button name="🧠 Analizar Imagen 🧠" type="buttom" />
+  </app-card>
 
 </ion-content>
