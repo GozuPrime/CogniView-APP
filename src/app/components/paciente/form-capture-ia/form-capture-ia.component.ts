@@ -1,10 +1,11 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, input, Input, OnInit, signal } from '@angular/core';
 import { HeaderComponent } from "src/app/shared/components/header/header.component";
 import { IonContent } from "@ionic/angular/standalone";
 import { ButtonComponent } from "src/app/shared/components/button/button.component";
 import { UtilsService } from 'src/app/core/services/utils.service';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ImagenComponent } from "src/app/shared/components/imagen/imagen.component";
+import { Paciente } from 'src/app/core/models/paciente/paciente';
 
 @Component({
   selector: 'app-form-capture-ia',
@@ -17,6 +18,8 @@ export class FormCaptureIaComponent implements OnInit {
   private utilsService = inject(UtilsService)
   imagen = signal<string>('')
 
+  @Input() paciente?:Paciente
+
   formulario !: FormGroup
   form = inject(FormBuilder)
 
@@ -27,7 +30,10 @@ export class FormCaptureIaComponent implements OnInit {
   }
 
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.paciente);
+
+  }
 
   async openCamara() {
     const data = await this.utilsService.takePicture('Imagen del Paciente')
