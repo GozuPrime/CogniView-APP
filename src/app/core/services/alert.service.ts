@@ -18,4 +18,27 @@ export class AlertService {
 
     await alert.present()
   }
+
+  async AlertConfirm(title: string, message: string): Promise<boolean> {
+  return new Promise(async (resolve) => {
+    const alert = await this.alert.create({
+      header: title,
+      message: message,
+      mode: 'ios',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => resolve(false)
+        },
+        {
+          text: 'Aceptar',
+          handler: () => resolve(true)
+        }
+      ]
+    });
+
+    await alert.present();
+  });
+}
 }

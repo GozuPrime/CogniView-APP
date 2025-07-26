@@ -1,4 +1,9 @@
-.icon-back {
+ion-toolbar {
+    display: flex;
+    justify-content: space-between;
+
+  .icon-back {
     color: #f7f7f7;
     font-size: 22px !important;
+  }
 }

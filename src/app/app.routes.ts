@@ -24,16 +24,6 @@ export const routes: Routes = [
     canActivate:[authGuard]
   },
   {
-    path: 'paciente',
-    loadComponent: () => import('./pages/paciente/paciente.page').then(m => m.PacientePage),
-    canActivate:[authGuard]
-  },
-  {
-    path: 'capture-ia/:id',
-    loadComponent: () => import('./pages/capture-ia/capture-ia.page').then(m => m.CaptureIAPage),
-    canActivate:[authGuard]
-  },
-  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full',

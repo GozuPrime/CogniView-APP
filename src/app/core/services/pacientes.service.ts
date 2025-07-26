@@ -24,4 +24,8 @@ export class PacientesService {
   paciente_dlt(idPaciente:string): Observable<ResponseServer> {
     return this.https.delete<ResponseServer>(this.url + 'paciente/'+idPaciente)
   }
+
+  paciente_sel(idPaciente:string): Observable<ResponseServer> {
+    return this.https.get<ResponseServer>(this.url + 'paciente/'+idPaciente)
+  }
 }

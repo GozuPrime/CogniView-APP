@@ -23,30 +23,19 @@ export class LoginPage implements OnInit {
   authServices = inject(AuthService)
   storageServices = inject(StorageService)
   alertServices = inject(AlertService)
-  constructor() { }
 
   ngOnInit() {
   }
 
   autenticacion(data: Login) {
-    console.log(data);
-    this.authService.login(data).subscribe({
-      next(response:ResponseServer) {
-          if(response.exito){
-            this.stogareService.
-            this.router.navigate(['/home/history-paciente']);
-          }
-      },
+    this.authServices.login(data).subscribe((event: ResponseServer) => {
+      if (event.exito) {
+        this.storageServices.setStorage('tokenPaciente', event._token);
+        this.router.navigate(['/home/history-paciente']);
+      } else {
+        this.alertServices.AlertError('Error', event.mensajeError)
+      }
     })
-    // next(response: ResponseServer) {
-    //   if (response.exito) {
-
-    //     this.storageServices.setStorage('tokenPaciente', response._token)
-    //     this.router.navigate(['/home/history-paciente']);
-    //   }
-
-    // },
-
   }
 
 }
