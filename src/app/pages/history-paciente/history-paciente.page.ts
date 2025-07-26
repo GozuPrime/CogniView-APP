@@ -19,7 +19,7 @@ import { FormCaptureIaComponent } from 'src/app/components/paciente/form-capture
   templateUrl: './history-paciente.page.html',
   styleUrls: ['./history-paciente.page.scss'],
   standalone: true,
-  imports: [IonContent, IonIcon,  CommonModule, FormsModule, IonItemOption, IonItemOptions, IonFab, IonFabButton, HeaderComponent, IonLabel, IonItemSliding, IonItem, IonList, IonAvatar]
+  imports: [IonContent, IonIcon, CommonModule, FormsModule, IonItemOption, IonItemOptions, IonFab, IonFabButton, HeaderComponent, IonLabel, IonItemSliding, IonItem, IonList, IonAvatar]
 })
 export class HistoryPacientePage {
 
@@ -49,7 +49,8 @@ export class HistoryPacientePage {
   async analityImagen(paciente?: Paciente) {
     const data = await this.utilsServices.presentModal({
       component: FormCaptureIaComponent,
-      componentProps: { paciente }
+      componentProps: { paciente },
+      animated: true
     })
 
     // if (data) {
@@ -61,12 +62,26 @@ export class HistoryPacientePage {
   async addUpdPaciente(paciente?: Paciente) {
     const data = await this.utilsServices.presentModal({
       component: FormPacienteComponent,
-      componentProps: { paciente }
+      componentProps: { paciente },
+      animated: true
     })
 
     if (data) {
-      const paciente = this.listPacientes()
-      this.listPacientes.set([...paciente, data.data[0]])
+      const dataPaciente = data.data[0]
+      const pacientes = this.listPacientes()
+
+      const validatePaciente = pacientes.some(p => p.idPaciente == dataPaciente.idPaciente)
+
+      if (validatePaciente) {
+        const newList = pacientes.map(p => {
+          return p.idPaciente == dataPaciente.idPaciente ? { ...p, ...dataPaciente } : p
+        })
+
+        this.listPacientes.set(newList)
+      } else {
+        this.listPacientes.set([...pacientes, data.data[0]])
+      }
+
     }
   }
 

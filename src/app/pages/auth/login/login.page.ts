@@ -10,13 +10,14 @@ import { ResponseServer } from 'src/app/core/models/response-server';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { StorageService } from 'src/app/core/services/storage.service';
 import { AlertService } from 'src/app/core/services/alert.service';
+import { ImagenComponent } from "src/app/shared/components/imagen/imagen.component";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, CardComponent, SubtitleComponent, FormLoginComponent]
+  imports: [CommonModule, FormsModule, CardComponent, SubtitleComponent, FormLoginComponent, ImagenComponent]
 })
 export class LoginPage implements OnInit {
   router = inject(Router)

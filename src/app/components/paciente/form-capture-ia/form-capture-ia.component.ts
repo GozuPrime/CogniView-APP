@@ -33,5 +33,6 @@ export class FormCaptureIaComponent implements OnInit {
     const data = await this.utilsService.takePicture('Imagen del Paciente')
     this.formulario.controls['imagen'].setValue(data.dataUrl)
     this.imagen.set(this.formulario.controls['imagen'].value);
+    console.log(this.imagen())
   }
 }

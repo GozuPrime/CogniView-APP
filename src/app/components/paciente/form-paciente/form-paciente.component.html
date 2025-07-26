@@ -1,4 +1,4 @@
-<app-header title="Nuevo Paciente" path="" [isModal]="true" />
+<app-header [title]="titulo()" path="" [isModal]="true" />
 
 <ion-content class="content-modal">
     <form enctype="multipart/form-data" method="post" [formGroup]="formulario" (submit)="submitForm()">

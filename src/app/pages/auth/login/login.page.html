@@ -1,8 +1,13 @@
 <div class="login-pages">
   <div class="form">
     <app-card>
+      <div class="container-logo">
+        <div class="logo">
+          <app-imagen alt="'Logo App'" url="assets/icon/favicon.png"/>
+        </div>
+      </div>
       <div class="subtitle">
-        <app-subtitle title="Bienvenido(a)" description="Plataforma para el monitoreo clínico en salud mental" />
+        <app-subtitle title="Inicio de Sesion" description="Plataforma para el monitoreo clínico en salud mental" />
       </div>
       <app-form-login (formAuth)="autenticacion($event)" />
     </app-card>
