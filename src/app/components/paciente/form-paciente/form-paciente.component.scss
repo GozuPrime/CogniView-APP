@@ -10,10 +10,13 @@ form {
   position: relative;
   height: calc(100% - 22px);
 
-  .btn-add-upd-paciente {
+  .buttom-form {
     position: absolute;
+    bottom: 10px;
+    right: 0;
     width: 100%;
-    bottom: 0;
-    left: 0;
+    .btn-add-upd-paciente {
+      width: 100%;
+    }
   }
 }

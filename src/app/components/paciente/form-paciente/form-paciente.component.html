@@ -1,13 +1,16 @@
 <app-header [title]="titulo()" path="" [isModal]="true" />
 
 <ion-content class="content-modal">
-    <form enctype="multipart/form-data" method="post" [formGroup]="formulario" (submit)="submitForm()">
-      <ion-input label="Nombre" label-placement="floating" fill="solid" formControlName="nombre"
-        placeholder="Nombre ..."></ion-input>
-      <ion-input label="Apellido" label-placement="floating" fill="solid" formControlName="apellido"
-        placeholder="Apellido ..."></ion-input>
-      <ion-input label="N° DNI" label-placement="floating" min="8" minlength="8" maxlength="8" max="8" fill="solid"
-        formControlName="dni" placeholder="Dni ..."></ion-input>
+  <form enctype="multipart/form-data" method="post" [formGroup]="formulario" (submit)="submitForm()">
+    <ion-input label="Nombre" label-placement="floating" fill="solid" formControlName="nombre"
+      placeholder="Nombre ..."></ion-input>
+    <ion-input label="Apellido" label-placement="floating" fill="solid" formControlName="apellido"
+      placeholder="Apellido ..."></ion-input>
+    <ion-input label="N° DNI" label-placement="floating" min="8" minlength="8" maxlength="8" max="8" fill="solid"
+      formControlName="dni" placeholder="Dni ..."></ion-input>
+
+    <div class="buttom-form">
       <app-button type="submit" class="btn-add-upd-paciente" name="Registrar Paciente" />
-    </form>
+    </div>
+  </form>
 </ion-content>
