@@ -2,4 +2,10 @@ form {
     display: flex;
     flex-direction: column;
     gap: 18px;
+
+    ion-input{
+      --color:#093073;
+      --placeholder-opacity:#093073;
+      --placeholder-color:#093073;
+    }
 }

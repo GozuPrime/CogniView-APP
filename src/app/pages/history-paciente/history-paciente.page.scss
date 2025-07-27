@@ -1,5 +1,20 @@
 .ion-padding {
-    .item-list {
-        margin: 0;
+  .item-list {
+    margin: 0;
+    gap: 10px;
+    .info-paciente {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
+  }
+}
+
+ion-fab {
+  ion-fab-button {
+    --background: #873fdf;
+    --color: #fdfdfd;
+    --background-activated: #873fdf;
+    --background-hover: #873fdf;
+  }
 }

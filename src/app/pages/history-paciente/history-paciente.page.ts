@@ -1,5 +1,5 @@
 import { Paciente } from './../../core/models/paciente/paciente';
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonFab, IonFabButton, IonIcon, IonItemOption, IonItemOptions, IonLabel, IonItemSliding, IonItem, IonList, IonAvatar } from '@ionic/angular/standalone';
@@ -11,7 +11,7 @@ import { ResponseServer } from 'src/app/core/models/response-server';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { UtilsService } from 'src/app/core/services/utils.service';
 import { FormPacienteComponent } from 'src/app/components/paciente/form-paciente/form-paciente.component';
-import { ModalController } from '@ionic/angular/standalone';
+import { ModalController, IonSearchbar } from '@ionic/angular/standalone';
 import { FormCaptureIaComponent } from 'src/app/components/paciente/form-capture-ia/form-capture-ia.component';
 
 @Component({
@@ -19,11 +19,12 @@ import { FormCaptureIaComponent } from 'src/app/components/paciente/form-capture
   templateUrl: './history-paciente.page.html',
   styleUrls: ['./history-paciente.page.scss'],
   standalone: true,
-  imports: [IonContent, IonIcon, CommonModule, FormsModule, IonItemOption, IonItemOptions, IonFab, IonFabButton, HeaderComponent, IonLabel, IonItemSliding, IonItem, IonList, IonAvatar]
+  imports: [IonContent, IonIcon, CommonModule, FormsModule, IonItemOption, IonItemOptions, IonFab, IonFabButton, HeaderComponent, IonLabel, IonItemSliding, IonItem, IonList, IonAvatar, IonSearchbar]
 })
 export class HistoryPacientePage {
 
   listPacientes = signal<Paciente[]>([])
+  listPacienteFiltro = signal<Paciente[]>([])
 
   private pacienteServices = inject(PacientesService)
   private alertServices = inject(AlertService)
@@ -38,12 +39,31 @@ export class HistoryPacientePage {
     this.loadPacientes();
   }
 
+
   loadPacientes() {
     this.pacienteServices.pacientes_sellst().subscribe((event: ResponseServer) => {
       if (event.exito) {
         this.listPacientes.set(event._pacientes as Paciente[])
+        this.listPacienteFiltro.set(event._pacientes as Paciente[])
       }
     })
+  }
+
+  handleInput(event: Event) {
+    const target = event.target as HTMLIonSearchbarElement
+    const data = target.value?.toLowerCase() as string
+
+    const list = this.listPacientes()
+    const filterList = list.filter((element) => {
+      const result = data === '' ||
+        element.dni?.toLowerCase().includes(data) ||
+        element.nombre?.toLowerCase().includes(data) ||
+        element.apellido?.toLowerCase().includes(data)
+
+      return result
+    })
+
+    this.listPacienteFiltro.set(filterList)
   }
 
   async analityImagen(paciente?: Paciente) {

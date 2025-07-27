@@ -1,17 +1,20 @@
-<app-header title="Analizar Imagen" [isModal]="true" />
+<app-header [title]="title()" [isModal]="true" />
 
 <ion-content>
   <form enctype="multipart/form-data" method="post" [formGroup]="formulario">
+    <!-- <strong>{{nombreCompleto()}} - {{documentoPaciente()}}</strong> -->
+
     <div class="container-logo">
-      <app-imagen [url]="imagen() == '' ? 'https://ionicframework.com/docs/img/demos/avatar.svg' : imagen()" alt="Imagen de analizar"/>
+      <app-imagen [url]="imagen() == '' ? 'https://ionicframework.com/docs/img/demos/avatar.svg' : imagen()"
+        alt="Imagen de analizar" />
     </div>
 
-    <!-- Botón para capturar imagen -->
-    <app-button name="📷 Capturar Imagen 📷" type="buttom" (click)="openCamara()" />
 
-    <!-- Botón para analizar imagen -->
-     <div class="buttom-form ">
-       <app-button name="🧠 Analizar Imagen 🧠" type="buttom" class="btn-anality" />
-     </div>
+    <div class="buttom-form ">
+      <!-- Botón para capturar imagen -->
+      <app-button name="📷 Capturar Imagen 📷" type="buttom" class="btn-form" (click)="openCamara()" />
+      <!-- Botón para analizar imagen -->
+      <app-button name="🧠 Analizar Imagen 🧠" type="buttom" class="btn-form" />
+    </div>
   </form>
 </ion-content>

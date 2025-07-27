@@ -16,10 +16,14 @@ import { Paciente } from 'src/app/core/models/paciente/paciente';
 export class FormCaptureIaComponent implements OnInit {
 
   private utilsService = inject(UtilsService)
+
   imagen = signal<string>('')
 
-  @Input() paciente?:Paciente
+  @Input() paciente?: Paciente
 
+  title = computed(() => {
+    return this.paciente?.nombre + ' ' + this.paciente?.apellido + ' - ' + this.paciente?.dni
+  })
   formulario !: FormGroup
   form = inject(FormBuilder)
 
@@ -31,7 +35,6 @@ export class FormCaptureIaComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.paciente);
 
   }
 

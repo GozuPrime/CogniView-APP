@@ -34,8 +34,19 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+// @import "@ionic/angular/css/palettes/dark.system.css";
 
+:root {
+  --background: #fdfdfd;
+  --color-primary: #873fdf;
+  --color-secundary: #4263f0;
+  --color: #093073;
+  --test: #6652ee;
+}
+/* ==== HEADER ====*/
+.toolbar-background {
+  background: #873fdf !important;
+}
 .example-content {
   display: flex;
   align-items: center;

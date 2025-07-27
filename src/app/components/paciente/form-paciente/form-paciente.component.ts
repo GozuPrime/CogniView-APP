@@ -25,9 +25,6 @@ export class FormPacienteComponent implements OnInit {
   idPaciente = signal<string>('')
 
   @Input() paciente?: Paciente;
-  // formAuth = output<PacienteResponse>()
-  // idPaciente = input.required<string>()
-  // paciente = input.required<Paciente>()
 
   formulario !: FormGroup
   form = inject(FormBuilder)
