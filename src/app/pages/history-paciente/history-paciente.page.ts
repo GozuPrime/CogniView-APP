@@ -26,6 +26,7 @@ export class HistoryPacientePage {
   listPacientes = signal<Paciente[]>([])
   listPacienteFiltro = signal<Paciente[]>([])
 
+
   private pacienteServices = inject(PacientesService)
   private alertServices = inject(AlertService)
   private utilsServices = inject(UtilsService)

@@ -11,11 +11,14 @@ import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { environment } from './environments/environment.prod';
 import { enableProdMode } from '@angular/core';
 
+import { register as RegisterSwiper } from 'swiper/element/bundle';
+
 defineCustomElements(window);
 if (environment.production) {
   enableProdMode();
 }
 
+RegisterSwiper()
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
