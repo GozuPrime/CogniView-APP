@@ -7,6 +7,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angul
 import { ImagenComponent } from "src/app/shared/components/imagen/imagen.component";
 import { Paciente } from 'src/app/core/models/paciente/paciente';
 import { IonTextarea } from '@ionic/angular/standalone';
+import { AnalisisResponse } from 'src/app/core/models/analisis/analisis-response';
 @Component({
   selector: 'app-form-capture-ia',
   templateUrl: './form-capture-ia.component.html',
@@ -53,5 +54,13 @@ export class FormCaptureIaComponent implements OnInit {
   eliminarImagen(index: number) {
     const nuevas = this.imagenes().filter((_, i) => i !== index);
     this.imagenes.set(nuevas);
+  }
+
+  submitAnalisis() {
+    let dataAnalisis: AnalisisResponse = {
+      idCliente:this.paciente?.idPaciente as string,
+      imagenes:this.imagenes()
+    }
+
   }
 }

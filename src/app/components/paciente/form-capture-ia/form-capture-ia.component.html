@@ -1,31 +1,28 @@
 <app-header [title]="title()" [isModal]="true" />
 
 <ion-content>
-  <form enctype="multipart/form-data" method="post" [formGroup]="formulario">
-    @if(imagenes().length> 0){
-    <swiper-container effect="cards" grab-cursor="true">
-      @for (item of imagenes(); track item; let index = $index) {
-      <swiper-slide>
-        <div class="container-logo">
-          <app-imagen [url]="item" alt="Imagen de analizar" />
-        </div>
-        <button class="btn-delete-img" (click)="eliminarImagen(index)">
-          <ion-icon name="close-outline" class="icon-back" slot="icon-only"></ion-icon>
-        </button>
-      </swiper-slide>
-      }
-    </swiper-container>
-    }@else {
-    <div class="logo-empy">
-      <div class="container-logo-empy">
-        <app-imagen [url]="imagen()" alt="Imagen de analizar" />
+  @if(imagenes().length> 0){
+  <swiper-container effect="cards" grab-cursor="true">
+    @for (item of imagenes(); track item; let index = $index) {
+    <swiper-slide>
+      <div class="container-logo">
+        <app-imagen [url]="item" alt="Imagen de analizar" />
       </div>
-    </div>
+      <button class="btn-delete-img" (click)="eliminarImagen(index)">
+        <ion-icon name="close-outline" class="icon-back" slot="icon-only"></ion-icon>
+      </button>
+    </swiper-slide>
     }
+  </swiper-container>
+  }@else {
+  <div class="logo-empy">
+    <div class="container-logo-empy">
+      <app-imagen [url]="imagen()" alt="Imagen de analizar" />
+    </div>
+  </div>
+  }
 
-    <ion-textarea label="Descrión del Paciente" labelPlacement="floating" fill="solid"></ion-textarea>
-
-  </form>
+  <ion-textarea label="Descrión del Paciente" labelPlacement="floating" fill="solid"></ion-textarea>
 </ion-content>
 
 <ion-footer>
