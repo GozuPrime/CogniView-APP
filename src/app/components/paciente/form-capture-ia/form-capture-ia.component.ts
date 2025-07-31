@@ -71,7 +71,7 @@ export class FormCaptureIaComponent implements OnInit {
       }
       this.pacienteService.analisis_inst(dataAnalisis).subscribe((event: ResponseServer) => {
         if (event.exito) {
-          console.log(event);
+          this.utilsService.dismissModal({ data: event.exito })
         } else {
           this.alterService.AlertError('Error', event.mensajeError)
         }

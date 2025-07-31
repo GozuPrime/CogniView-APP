@@ -11,7 +11,7 @@ import { ResponseServer } from 'src/app/core/models/response-server';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { UtilsService } from 'src/app/core/services/utils.service';
 import { FormPacienteComponent } from 'src/app/components/paciente/form-paciente/form-paciente.component';
-import { ModalController, IonSearchbar } from '@ionic/angular/standalone';
+import { IonSearchbar } from '@ionic/angular/standalone';
 import { FormCaptureIaComponent } from 'src/app/components/paciente/form-capture-ia/form-capture-ia.component';
 
 @Component({
@@ -30,7 +30,6 @@ export class HistoryPacientePage {
   private pacienteServices = inject(PacientesService)
   private alertServices = inject(AlertService)
   private utilsServices = inject(UtilsService)
-  private modalController = inject(ModalController)
 
   constructor() {
     addIcons({ add, trash, createOutline, cameraOutline, archiveOutline });
@@ -74,10 +73,9 @@ export class HistoryPacientePage {
       animated: true
     })
 
-    // if (data) {
-    //   const paciente = this.listPacientes()
-    //   this.listPacientes.set([...paciente, data.data[0]])
-    // }
+    if (data) {
+this.alertServices.AlertError('Exito !!','El analisis se subio correctamente.')
+    }
   }
 
   async addUpdPaciente(paciente?: Paciente) {
