@@ -1,7 +1,13 @@
 <ion-menu contentId="main-content">
-  <app-header title="CogniView"/>
+  <app-header title="CogniView" />
   <ion-content class="ion-padding">
+    <div class="container-logo">
+      <div class="logo">
+        <app-imagen alt="'Logo App'" url="assets/icon/favicon.png"/>
+      </div>
+    </div>
 
+    <app-button type="button" name="Cerrar Sesion" (click)="cerrarSesion()"/>
   </ion-content>
 </ion-menu>
 
