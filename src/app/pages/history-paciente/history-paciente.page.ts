@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonFab, IonFabButton, IonIcon, IonItemOption, IonItemOptions, IonLabel, IonItemSliding, IonItem, IonList, IonAvatar } from '@ionic/angular/standalone';
 import { HeaderComponent } from "src/app/shared/components/header/header.component";
 import { addIcons } from 'ionicons';
-import { add, trash, createOutline, cameraOutline } from 'ionicons/icons';
+import { add, trash, createOutline, cameraOutline, archiveOutline } from 'ionicons/icons';
 import { PacientesService } from 'src/app/core/services/pacientes.service';
 import { ResponseServer } from 'src/app/core/models/response-server';
 import { AlertService } from 'src/app/core/services/alert.service';
@@ -33,7 +33,7 @@ export class HistoryPacientePage {
   private modalController = inject(ModalController)
 
   constructor() {
-    addIcons({ add, trash, createOutline, cameraOutline });
+    addIcons({ add, trash, createOutline, cameraOutline, archiveOutline });
   }
 
   ionViewWillEnter() {

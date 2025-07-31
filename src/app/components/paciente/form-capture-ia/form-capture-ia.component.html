@@ -1,39 +1,38 @@
 <app-header [title]="title()" [isModal]="true" />
+<ion-content [fullscreen]="false">
+  <form method="post" enctype="multipart/form-data" [formGroup]="formulario" (submit)="submitAnalisis()">
 
-<ion-content>
-  @if(imagenes().length> 0){
-  <swiper-container effect="cards" grab-cursor="true">
-    @for (item of imagenes(); track item; let index = $index) {
-    <swiper-slide>
-      <div class="container-logo">
-        <app-imagen [url]="item" alt="Imagen de analizar" />
+    @if(imagenes().length> 0){
+    <swiper-container effect="cards" grab-cursor="true">
+      @for (item of imagenes(); track item; let index = $index) {
+      <swiper-slide>
+        <div class="container-logo">
+          <app-imagen [url]="item" alt="Imagen de analizar" />
+        </div>
+        <button class="btn-delete-img" (click)="eliminarImagen(index)">
+          <ion-icon name="close-outline" class="icon-back" slot="icon-only"></ion-icon>
+        </button>
+      </swiper-slide>
+      }
+    </swiper-container>
+    }@else {
+    <div class="logo-empy">
+      <div class="container-logo-empy">
+        <app-imagen [url]="imagen()" alt="Imagen de analizar" />
       </div>
-      <button class="btn-delete-img" (click)="eliminarImagen(index)">
-        <ion-icon name="close-outline" class="icon-back" slot="icon-only"></ion-icon>
-      </button>
-    </swiper-slide>
-    }
-  </swiper-container>
-  }@else {
-  <div class="logo-empy">
-    <div class="container-logo-empy">
-      <app-imagen [url]="imagen()" alt="Imagen de analizar" />
     </div>
-  </div>
-  }
+    }
 
-  <ion-textarea label="Descrión del Paciente" labelPlacement="floating" fill="solid"></ion-textarea>
-</ion-content>
+    <ion-textarea label="Descripción del Paciente" formControlName="descripcion" labelPlacement="floating"
+      fill="solid"></ion-textarea>
 
-<ion-footer>
-  <ion-toolbar>
-    <div class="buttom-form ">
+    <div class="buttom-forms">
       @if(imagenes().length <= 2){ <!-- Botón para capturar imagen -->
-        <app-button name="📷 Capturar Imagen 📷" type="buttom" class="btn-form" (click)="openCamara()" />
+        <app-button name="📷 Capturar Imagen 📷" type="button" class="btn-form" (click)="openCamara()" />
         }@else{
         <!-- Botón para analizar imagen -->
-        <app-button name="🧠 Analizar Imagen 🧠" type="buttom" class="btn-form" />
+        <app-button name="🧠 Analizar Imagen 🧠" type="submit" class="btn-form" />
         }
     </div>
-  </ion-toolbar>
-</ion-footer>
+  </form>
+</ion-content>

@@ -13,7 +13,7 @@ export class AlertService {
       // subHeader: 'A Sub Header Is Optional',
       message: detail,
       buttons: ['Ok'],
-      mode: 'ios'
+      mode: 'md'
     });
 
     await alert.present()
@@ -24,7 +24,7 @@ export class AlertService {
     const alert = await this.alert.create({
       header: title,
       message: message,
-      mode: 'ios',
+      mode: 'md',
       buttons: [
         {
           text: 'Cancelar',

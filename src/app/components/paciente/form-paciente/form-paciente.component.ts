@@ -1,6 +1,6 @@
 import { Component, inject, Input, input, OnInit, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { IonInput, IonContent, IonToolbar, IonFooter } from "@ionic/angular/standalone";
+import { IonInput, IonContent } from "@ionic/angular/standalone";
 import { Paciente } from 'src/app/core/models/paciente/paciente';
 import { PacienteResponse } from 'src/app/core/models/paciente/paciente-response';
 import { PacienteResponseUpd } from 'src/app/core/models/paciente/paciente-response-upd';
@@ -14,7 +14,7 @@ import { HeaderComponent } from "src/app/shared/components/header/header.compone
   selector: 'app-form-paciente',
   templateUrl: './form-paciente.component.html',
   styleUrls: ['./form-paciente.component.scss'],
-  imports: [IonInput, ButtonComponent, ReactiveFormsModule, HeaderComponent, IonContent, IonToolbar, IonFooter],
+  imports: [IonInput, ButtonComponent, ReactiveFormsModule, HeaderComponent, IonContent],
 })
 export class FormPacienteComponent implements OnInit {
   private alertService = inject(AlertService)

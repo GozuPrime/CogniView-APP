@@ -1,4 +1,5 @@
 export interface AnalisisResponse {
-  idCliente: string;
+  idPaciente: string;
+  descripcion:string;
   imagenes: string[];
 }

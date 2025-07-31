@@ -1,14 +1,12 @@
-.content-modal {
-  padding: 10px;
-}
+
 
 form {
+
   margin: 10px;
   display: flex;
   flex-direction: column;
   gap: 18px;
   position: relative;
-  height: calc(100% - 22px);
 
   swiper-container {
     width: 240px;

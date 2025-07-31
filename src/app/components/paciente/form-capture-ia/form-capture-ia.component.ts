@@ -1,13 +1,16 @@
+import { ResponseServer } from './../../../core/models/response-server';
 import { Component, computed, CUSTOM_ELEMENTS_SCHEMA, inject, input, Input, OnInit, signal } from '@angular/core';
 import { HeaderComponent } from "src/app/shared/components/header/header.component";
 import { IonContent } from "@ionic/angular/standalone";
 import { ButtonComponent } from "src/app/shared/components/button/button.component";
 import { UtilsService } from 'src/app/core/services/utils.service';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ImagenComponent } from "src/app/shared/components/imagen/imagen.component";
 import { Paciente } from 'src/app/core/models/paciente/paciente';
 import { IonTextarea } from '@ionic/angular/standalone';
 import { AnalisisResponse } from 'src/app/core/models/analisis/analisis-response';
+import { AlertService } from 'src/app/core/services/alert.service';
+import { PacientesService } from 'src/app/core/services/pacientes.service';
 @Component({
   selector: 'app-form-capture-ia',
   templateUrl: './form-capture-ia.component.html',
@@ -18,6 +21,8 @@ import { AnalisisResponse } from 'src/app/core/models/analisis/analisis-response
 export class FormCaptureIaComponent implements OnInit {
 
   private utilsService = inject(UtilsService)
+  private alterService = inject(AlertService)
+  private pacienteService = inject(PacientesService)
 
   imagen = signal<string>('https://ionicframework.com/docs/img/demos/avatar.svg')
   imagenes = signal<string[]>([])
@@ -34,7 +39,7 @@ export class FormCaptureIaComponent implements OnInit {
 
   constructor() {
     this.formulario = this.form.group({
-      imagen: new FormControl('')
+      descripcion: new FormControl('', [Validators.required])
     })
   }
 
@@ -57,10 +62,23 @@ export class FormCaptureIaComponent implements OnInit {
   }
 
   submitAnalisis() {
-    let dataAnalisis: AnalisisResponse = {
-      idCliente:this.paciente?.idPaciente as string,
-      imagenes:this.imagenes()
-    }
+    if (this.formulario.valid) {
 
+      let dataAnalisis: AnalisisResponse = {
+        idPaciente: this.paciente?.idPaciente as string,
+        descripcion: this.formulario.controls['descripcion'].value,
+        imagenes: this.imagenes()
+      }
+      this.pacienteService.analisis_inst(dataAnalisis).subscribe((event: ResponseServer) => {
+        if (event.exito) {
+          console.log(event);
+        } else {
+          this.alterService.AlertError('Error', event.mensajeError)
+        }
+      })
+      console.log(dataAnalisis);
+    } else {
+      this.alterService.AlertError('Error', 'Debes agregar la descripción del analisis')
+    }
   }
 }

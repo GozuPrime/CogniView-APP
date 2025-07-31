@@ -8,9 +8,9 @@ import { IonButton } from '@ionic/angular/standalone';
   styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent implements OnInit {
-  type = input.required<'buttom' | 'submit'>()
+  type = input.required<'button' | 'submit'>()
   name = input.required<string>()
-  
+
   constructor() { }
 
   ngOnInit() { }

@@ -54,8 +54,22 @@
   height: 100%;
 }
 
-ion-content.content-modal.md.content-ltr.hydrated {
+ion-input {
+  --background: #fdfdfd;
+}
+
+ion-input {
+    --color: #093073;
+    --placeholder-opacity: #093073;
+    --placeholder-color: #093073;
+    --highlight-color-valid:#093073;
+
+  }
+
+
+ion-content.md.content-ltr.hydrated {
   position: relative;
   --offset-top: 0px !important;
   --offset-bottom: 0px !important;
+  --keyboard-offset: 0px !important;
 }
