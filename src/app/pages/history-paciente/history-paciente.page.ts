@@ -74,7 +74,7 @@ export class HistoryPacientePage {
     })
 
     if (data) {
-this.alertServices.AlertError('Exito !!','El analisis se subio correctamente.')
+      this.alertServices.AlertError('Exito !!', 'El analisis se subio correctamente.')
     }
   }
 
@@ -97,8 +97,10 @@ this.alertServices.AlertError('Exito !!','El analisis se subio correctamente.')
         })
 
         this.listPacientes.set(newList)
+        this.listPacienteFiltro.set(newList)
       } else {
         this.listPacientes.set([...pacientes, data.data[0]])
+        this.listPacienteFiltro.set([...pacientes, data.data[0]])
       }
 
     }
@@ -115,6 +117,7 @@ this.alertServices.AlertError('Exito !!','El analisis se subio correctamente.')
         if (event.exito) {
           const newList = this.listPacientes().filter(element => element.idPaciente !== paciente.idPaciente)
           this.listPacientes.set(newList)
+          this.listPacienteFiltro.set(newList)
         } else {
           this.alertServices.AlertError('Error', event.mensajeError)
         }

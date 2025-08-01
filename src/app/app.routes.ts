@@ -6,12 +6,17 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () => import('./pages/auth/login/login.page').then(m => m.LoginPage),
-    canActivate:[notAuthGuard]
+    canActivate: [notAuthGuard]
   },
   {
     path: 'home',
     loadComponent: () => import('./shared/layout/template/template.component').then(template => template.TemplateComponent),
     children: [
+      {
+        path: '',
+        redirectTo: 'history-paciente',
+        pathMatch: 'full'  // 👈 importante
+      },
       {
         path: 'history-paciente',
         loadComponent: () => import('./pages/history-paciente/history-paciente.page').then(m => m.HistoryPacientePage)
@@ -21,7 +26,7 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/result-paciente/result-paciente.page').then(m => m.ResultPacientePage)
       },
     ],
-    canActivate:[authGuard]
+    canActivate: [authGuard]
   },
   {
     path: '',
