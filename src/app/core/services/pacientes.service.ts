@@ -41,4 +41,8 @@ export class PacientesService {
     return this.https.post<ResponseServer>(this.url+'analisis/',datos)
   }
 
+  pacientes_analisis_sellst(): Observable<ResponseServer> {
+    return this.https.get<ResponseServer>(this.url + 'paciente/analisis/')
+  }
+
 }
