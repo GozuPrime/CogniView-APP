@@ -12,11 +12,15 @@ import { environment } from './environments/environment.prod';
 import { enableProdMode } from '@angular/core';
 
 import { register as RegisterSwiper } from 'swiper/element/bundle';
+import { registerLocaleData } from '@angular/common';
+import localeEsPE from '@angular/common/locales/es-PE';
 
 defineCustomElements(window);
 if (environment.production) {
   enableProdMode();
 }
+
+registerLocaleData(localeEsPE);
 
 RegisterSwiper()
 bootstrapApplication(AppComponent, {

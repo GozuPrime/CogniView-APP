@@ -2,13 +2,13 @@
 
 <ion-content [fullscreen]="true" class="ion-padding" style="background-color: #fafafa;">
 
-   <ion-searchbar (ionInput)="handleInput($event)" placeholder="Buscar Paciente"></ion-searchbar>
+  <ion-searchbar (ionInput)="handleInput($event)" placeholder="Buscar Paciente"></ion-searchbar>
 
   <ion-grid>
     <ion-row>
       @for (item of lstResultadoAnalisisFilter(); track $index) {
-      <ion-col  sizeXs="12" sizeXl="3" sizeLg="4" sizeMd="6" sizeSm="12" size="12">
-        <app-items-result [pacienteAnalisis]="item" />
+      <ion-col sizeXs="12" sizeXl="3" sizeLg="4" sizeMd="6" sizeSm="12" size="12">
+        <app-items-result [pacienteAnalisis]="item" (click)="openDeailtResult(item)" />
       </ion-col>
       }
     </ion-row>

@@ -1,0 +1,10 @@
+<ion-accordion-group>
+  @for (item of listAnalisisResultados(); track $index; let index = $index) {
+  <ion-accordion [value]="index">
+    <ion-item slot="header" color="light">
+      <ion-label>{{item.Analisis.fecha | dateFormat}}</ion-label>
+    </ion-item>
+    <div class="ion-padding" slot="content">{{item.Analisis.descripcion}}</div>
+  </ion-accordion>
+  }
+</ion-accordion-group>

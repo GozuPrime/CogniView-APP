@@ -18,7 +18,6 @@ export class ItemsResultComponent implements OnInit {
   totalAnalisis = computed(() => this.pacienteAnalisis()?.AnalisisResultados.length)
 
   ngOnInit(): void {
-    console.log(this.pacienteAnalisis());
-
+    // console.log(this.pacienteAnalisis());
   }
 }
