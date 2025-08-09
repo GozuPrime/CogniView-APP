@@ -58,14 +58,16 @@ export class ResultPacientePage {
   }
 
   async openDeailtResult(event: PacienteAnalisis) {
-    const data = await this.utilsService.presentModal({
-      component: ListResultComponent,
-      componentProps: { event },
-      animated: true,
-      expandToScroll: false,
-      initialBreakpoint: 0.25,
-      breakpoints: [0, 0.25, 0.5, 0.75, 1]
-    })
+    if (event.AnalisisResultados.length > 0) {
+      const data = await this.utilsService.presentModal({
+        component: ListResultComponent,
+        componentProps: { event },
+        animated: true,
+        expandToScroll: false,
+        initialBreakpoint: 0.25,
+        breakpoints: [0, 0.25, 0.5, 0.75, 1]
+      })
+    }
 
   }
 }

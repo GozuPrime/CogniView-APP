@@ -1,15 +1,20 @@
-<div class="login-pages">
-  <div class="form">
-    <app-card>
-      <div class="container-logo">
-        <div class="logo">
-          <app-imagen alt="'Logo App'" url="assets/icon/favicon.png"/>
+<ion-content [fullscreen]="false">
+  <div class="login-pages">
+    <div class="content-login">
+      <app-card class="card-login-img">
+        <div class="container-logo">
+          <div class="logo">
+            <app-imagen alt="'Logo App'" url="assets/icon/favicon.webp" />
+          </div>
         </div>
-      </div>
+
+      </app-card>
       <div class="subtitle">
         <app-subtitle title="Inicio de Sesion" description="Plataforma para el monitoreo clínico en salud mental" />
       </div>
-      <app-form-login (formAuth)="autenticacion($event)" />
-    </app-card>
+      <div class="form-login">
+        <app-form-login (formAuth)="autenticacion($event)" />
+      </div>
+    </div>
   </div>
-</div>
+</ion-content>

@@ -1,7 +1,10 @@
-ion-tabs{
-  ion-tab-bar{
-    ion-tab-button{
-      --color-selected:#093073;
+ion-tabs {
+  ion-tab-bar {
+    background: #17223c !important;
+    ion-tab-button {
+      background: #17223c !important;
+      --color-selected: #f6f7fb !important;
+      color: #f6f7fb !important;
     }
   }
 }

@@ -1,0 +1,36 @@
+/* === CARD - LOGIN ===*/
+.card-login-img,
+.card-patient-history {
+  width: 100% !important;
+  display: flex !important;
+}
+
+.card-patient-history {
+  background: #ffffff !important;
+  flex-direction: column !important;
+  height: 100%;
+  border-radius: 0 0 50px 50px !important;
+  overflow: auto;
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.card-login-img {
+  background: #d9dfef !important;
+  border-radius: 0 0 70px 70px !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+/* === CARD -RESULT ===*/
+
+.card-result-poi {
+  cursor: pointer !important;
+}
+
+.card-result-def {
+  cursor: default !important;
+}

@@ -1,10 +1,14 @@
 ion-toolbar {
   display: flex;
   justify-content: space-between;
-  --background: #873fdf;
-  --color:#fdfdfd;
+  --background: #ffffff !important;
+  --color: #17223c !important;
   .icon-back {
-    color: #fdfdfd;
+    color: #17223c;
     font-size: 22px !important;
   }
 }
+//#17223c
+//#dddee3
+//#ffffff
+//#f6f7fb

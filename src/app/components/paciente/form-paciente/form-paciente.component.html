@@ -1,6 +1,6 @@
 <app-header [title]="titulo()" path="" [isModal]="true" />
 
-<ion-content class="content-modal">
+<ion-content [fullscreen]="false">
   <form enctype="multipart/form-data" method="post" [formGroup]="formulario" (submit)="submitForm()">
     <ion-input label="Nombre" label-placement="floating" fill="solid" formControlName="nombre"
       placeholder="Nombre ..."></ion-input>

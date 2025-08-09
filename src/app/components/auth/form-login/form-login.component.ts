@@ -22,9 +22,15 @@ export class FormLoginComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
     });
+    this.formulario.reset()
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+    this.formulario.reset()
+  }
 
   async submitForm() {
     if (this.formulario.valid) {

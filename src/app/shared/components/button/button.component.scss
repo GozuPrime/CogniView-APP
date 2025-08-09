@@ -1,6 +1,21 @@
-.button-cw {
-  --background: #873fdf;
+.button-cw-white {
+  --background: #f6f7fb;
+  --color: #17223c;
+  --background-activated: #f6f7fb;
+  --background-hover: #f6f7fb;
+  border-radius: 40px !important;
+  overflow: hidden;
+  font-size: clamp(.9rem, 1rem, 2rem) !important;
+  font-weight: 700 !important;
+}
+
+.button-cw-dark {
+  border-radius: 40px !important;
+  overflow: hidden;
+  font-size: clamp(1rem, 1.4rem, 2rem) !important;
+  font-weight: 700 !important;
+  --background: #17223c;
   --color: #fdfdfd;
-  --background-activated:#873fdf;
-  --background-hover:#873fdf;
+  --background-activated: #17223c;
+  --background-hover: #17223c;
 }

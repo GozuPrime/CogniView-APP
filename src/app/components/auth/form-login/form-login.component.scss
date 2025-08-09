@@ -1,7 +1,9 @@
 form {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 10px;
+  margin-inline: 0.2rem;
+  margin-bottom: 10px;
 
   .btn-auth {
     margin-top: 10px;

@@ -1,3 +1,4 @@
+import { NgClass } from '@angular/common';
 import { Component, input, OnInit } from '@angular/core';
 import { IonButton } from '@ionic/angular/standalone';
 
@@ -11,8 +12,11 @@ export class ButtonComponent implements OnInit {
   type = input.required<'button' | 'submit'>()
   name = input.required<string>()
 
+  differentColor = input<boolean>()
+
   constructor() { }
 
   ngOnInit() { }
+
 
 }

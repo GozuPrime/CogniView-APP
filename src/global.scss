@@ -1,3 +1,7 @@
+@use "./styles/font.scss";
+@use "./styles/card.scss";
+@use "./styles/input.scss";
+@use "./styles/button.scss";
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
@@ -36,13 +40,41 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 // @import "@ionic/angular/css/palettes/dark.system.css";
 
-:root {
-  --background: #fdfdfd;
-  --color-primary: #873fdf;
-  --color-secundary: #4263f0;
-  --color: #093073;
-  --test: #6652ee;
+//#17223c
+//#dddee3
+//#ffffff
+//#f6f7fb
+
+html,
+body,
+app-root {
+  background: #17223c !important;
 }
+
+ion-content {
+  background: #17223c !important;
+  --background: #17223c !important;
+  scrollbar-width: none;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ion-content::-webkit-scrollbar {
+  display: none;
+}
+
+.header-pages-patient-history {
+  margin-inline: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+}
+
 /* ==== HEADER ====*/
 .toolbar-background {
   background: #873fdf !important;
@@ -54,32 +86,46 @@
   height: 100%;
 }
 
+.ios.overscroll.content-ltr.hydrated {
+  --offset-top: 0px !important;
+  --offset-bottom: 0px !important;
+  --keyboard-offset: 0px !important;
+}
+
 .container-logo {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 1.5rem;
-  .logo {
+  .logo,
+  .logo-intro {
+    border-radius: 50%;
     overflow: hidden;
-    width: 160px;
-    height: 160px;
+  }
+  .logo {
+    width: 300px;
+    height: 290px;
+  }
+
+  .logo-intro {
+    width: 180px;
+    height: 180px;
   }
 }
 
-ion-input {
-  --color: #093073;
-  --placeholder-opacity: #093073;
-  --placeholder-color: #093073;
-  --highlight-color-valid: #093073;
-  --placeholder-color: black;
-  border-radius: 10px;
-  color: black !important;
-  overflow: hidden;
-}
-
-ion-content.md.content-ltr.hydrated {
-  position: relative;
-  --offset-top: 0px !important;
-  --offset-bottom: 0px !important;
-  --keyboard-offset: 0px !important;
+@keyframes pulser {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

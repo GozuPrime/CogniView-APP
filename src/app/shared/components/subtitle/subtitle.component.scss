@@ -1,8 +1,9 @@
 .sub-title {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 5px;
   justify-content: center;
+  margin-inline: 0.9rem;
   h2 {
     text-align: center;
     padding: 0;
@@ -12,22 +13,14 @@
     color: #fdfdfd;
     width: 100%;
     font-weight: 700;
-    font-size: clamp(2rem, 2.1vh, 2.4rem);
+    font-size: clamp(2rem, 2.1rem, 3rem);
   }
-
-  // h2::after {
-  //   content: "";
-  //   display: block;
-  //   width: 100%;
-  //   height: 2px;
-  //   background: #093073;
-  // }
 
   p {
     text-align: center;
     padding: 0;
     margin: 0;
     color: #fdfdfd;
-    font-size: clamp(1rem, 1.7vh, 1.9rem);
+    font-size: clamp(1rem, 1.2rem, 2.4rem);
   }
 }

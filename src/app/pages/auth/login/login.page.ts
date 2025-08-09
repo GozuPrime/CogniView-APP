@@ -11,13 +11,14 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { StorageService } from 'src/app/core/services/storage.service';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { ImagenComponent } from "src/app/shared/components/imagen/imagen.component";
+import { IonContent } from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, CardComponent, SubtitleComponent, FormLoginComponent, ImagenComponent]
+  imports: [CommonModule, FormsModule, CardComponent, SubtitleComponent, FormLoginComponent, ImagenComponent, IonContent]
 })
 export class LoginPage implements OnInit {
   router = inject(Router)
@@ -27,6 +28,8 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
+
+
 
   autenticacion(data: Login) {
     this.authServices.login(data).subscribe((event: ResponseServer) => {

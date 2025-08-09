@@ -3,9 +3,8 @@ import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonFab, IonFabButton, IonIcon, IonItemOption, IonItemOptions, IonLabel, IonItemSliding, IonItem, IonList, IonAvatar } from '@ionic/angular/standalone';
-import { HeaderComponent } from "src/app/shared/components/header/header.component";
 import { addIcons } from 'ionicons';
-import { add, trash, createOutline, cameraOutline, archiveOutline } from 'ionicons/icons';
+import { add, trash, createOutline, cameraOutline, archiveOutline, searchOutline } from 'ionicons/icons';
 import { PacientesService } from 'src/app/core/services/pacientes.service';
 import { ResponseServer } from 'src/app/core/models/response-server';
 import { AlertService } from 'src/app/core/services/alert.service';
@@ -13,13 +12,14 @@ import { UtilsService } from 'src/app/core/services/utils.service';
 import { FormPacienteComponent } from 'src/app/components/paciente/form-paciente/form-paciente.component';
 import { IonSearchbar } from '@ionic/angular/standalone';
 import { FormCaptureIaComponent } from 'src/app/components/paciente/form-capture-ia/form-capture-ia.component';
+import { CardComponent } from "src/app/shared/components/card/card.component";
 
 @Component({
   selector: 'app-history-paciente',
   templateUrl: './history-paciente.page.html',
   styleUrls: ['./history-paciente.page.scss'],
   standalone: true,
-  imports: [IonContent, IonIcon, CommonModule, FormsModule, IonItemOption, IonItemOptions, IonFab, IonFabButton, HeaderComponent, IonLabel, IonItemSliding, IonItem, IonList, IonAvatar, IonSearchbar]
+  imports: [IonContent, IonIcon, CommonModule, FormsModule, IonItemOption, IonItemOptions, IonFab, IonFabButton, IonLabel, IonItemSliding, IonItem, IonList, IonAvatar, IonSearchbar, CardComponent]
 })
 export class HistoryPacientePage {
 
@@ -31,8 +31,10 @@ export class HistoryPacientePage {
   private alertServices = inject(AlertService)
   private utilsServices = inject(UtilsService)
 
+  searchOpenClose = signal<boolean>(false)
+
   constructor() {
-    addIcons({ add, trash, createOutline, cameraOutline, archiveOutline });
+    addIcons({ add, trash, createOutline, cameraOutline, archiveOutline, searchOutline });
   }
 
   ionViewWillEnter() {
@@ -47,6 +49,14 @@ export class HistoryPacientePage {
         this.listPacienteFiltro.set(event._pacientes as Paciente[])
       }
     })
+  }
+
+  search() {
+    if (this.searchOpenClose()) {
+      this.searchOpenClose.set(false)
+    } else {
+      this.searchOpenClose.set(true)
+    }
   }
 
   handleInput(event: Event) {

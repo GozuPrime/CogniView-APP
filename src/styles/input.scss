@@ -1,0 +1,53 @@
+//#17223c
+//#dddee3
+//#ffffff
+//#f6f7fb
+
+ion-input {
+  border-radius: 30px !important;
+  color: black !important;
+  overflow: hidden !important;
+}
+
+.label-text.sc-ion-input-md {
+  color: black !important;
+}
+
+.input-wrapper.sc-ion-input-md {
+  background-color: #ffffff !important;
+  border: 1px solid #f6f7fb !important;
+  border-radius: 30px !important;
+}
+.input-highlight.sc-ion-input-md {
+  background: transparent !important;
+}
+
+ion-content {
+  background-color: var(--background) !important;
+}
+ion-content.md.content-ltr.hydrated {
+  position: relative;
+  --offset-top: 0px !important;
+  --offset-bottom: 0px !important;
+  --keyboard-offset: 0px !important;
+}
+input.searchbar-input.sc-ion-searchbar-md {
+  border-radius: 30px !important;
+  color: #17223c !important;
+  background-color: #ffffff !important;
+}
+
+
+.patient-search {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 500ms ease-in-out,
+    opacity 500ms ease-in-out;
+}
+
+.open-patient-search {
+  max-height: 60px;
+  opacity: 1;
+}

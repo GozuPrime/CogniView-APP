@@ -9,6 +9,10 @@ export const routes: Routes = [
     canActivate: [notAuthGuard]
   },
   {
+    path: 'intro',
+    loadComponent: () => import('./pages/intro/intro.component').then(i => i.IntroComponent)
+  },
+  {
     path: 'home',
     loadComponent: () => import('./shared/layout/template/template.component').then(template => template.TemplateComponent),
     children: [
@@ -30,7 +34,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'intro',
     pathMatch: 'full',
   },
 ];
