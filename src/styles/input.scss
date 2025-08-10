@@ -14,7 +14,6 @@ ion-textarea {
   --background: #ffffff !important;
 }
 
-
 .label-text.sc-ion-input-md,
 .label-text-wrapper.sc-ion-textarea-md {
   color: black !important;
@@ -49,7 +48,8 @@ input.searchbar-input.sc-ion-searchbar-md {
   background-color: #ffffff !important;
 }
 
-.patient-search {
+.patient-search,
+.result-search {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
@@ -58,7 +58,8 @@ input.searchbar-input.sc-ion-searchbar-md {
     opacity 500ms ease-in-out;
 }
 
-.open-patient-search {
+.open-patient-search,
+.open-result-search {
   max-height: 60px;
   opacity: 1;
 }

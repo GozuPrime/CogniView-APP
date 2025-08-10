@@ -3,7 +3,6 @@ import { IonIcon, IonTabBar, IonTabButton, IonTabs, IonContent, IonMenu } from '
 
 import { addIcons } from 'ionicons';
 import { peopleOutline, clipboardOutline } from 'ionicons/icons';
-import { HeaderComponent } from "../../components/header/header.component";
 import { ImagenComponent } from "../../components/imagen/imagen.component";
 import { ButtonComponent } from "../../components/button/button.component";
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -12,7 +11,7 @@ import { Router } from '@angular/router';
   selector: 'app-template',
   templateUrl: './template.component.html',
   styleUrls: ['./template.component.scss'],
-  imports: [IonIcon, IonTabBar, IonTabButton, IonTabs, IonContent, IonMenu, HeaderComponent, ImagenComponent, ButtonComponent]
+  imports: [IonIcon, IonTabBar, IonTabButton, IonTabs, IonContent, IonMenu, ImagenComponent, ButtonComponent]
 })
 export class TemplateComponent {
 

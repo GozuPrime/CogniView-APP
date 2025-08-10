@@ -4,6 +4,7 @@
 @use "./styles/button.scss";
 @use "./styles/modal.scss";
 @use "./styles/item.scss";
+
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
@@ -75,36 +76,61 @@ ion-content::-webkit-scrollbar {
   display: none;
 }
 
-.header-pages-patient-history {
-  margin-inline: 1rem;
+.header-pages-patient-history,
+.header-pages-patient-result {
+  padding-inline: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding-top: 1rem;
+  background-color: #ffffff;
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  left: 0;
+  gap: 10px;
+  .title-pages {
+    p {
+      font-family: "Libertinus Sans";
+      color: #17223c;
+      font-size: clamp(2rem, 2.4rem, 3rem);
+      font-weight: 900;
+    }
+  }
+
+  .icon-search {
+    ion-icon {
+      cursor: pointer;
+      animation: pulser 7s ease infinite;
+      font-size: clamp(1.4rem, 1.8rem, 2rem);
+    }
+  }
 }
 
 /* ==== HEADER ====*/
-.toolbar-background {
-  background: #873fdf !important;
-}
-.example-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
+// .toolbar-background {
+// background: #873fdf !important;
+// }
+// .example-content {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 100%;
+// }
 
-.ios.overscroll.content-ltr.hydrated {
-  --offset-top: 0px !important;
-  --offset-bottom: 0px !important;
-  --keyboard-offset: 0px !important;
-}
+// .ios.overscroll.content-ltr.hydrated {
+//   --offset-top: 0px !important;
+//   --offset-bottom: 0px !important;
+//   --keyboard-offset: 0px !important;
+// }
 
-.container-logo-patient {
-  display: flex;
-  justify-content: center;
-}
+// .container-logo-patient {
+//   display: flex;
+//   justify-content: center;
+// }
+
+/* === CONTENIDO DEL LOGO ===*/
 
 .container-logo {
   width: 100%;

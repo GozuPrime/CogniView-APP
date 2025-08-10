@@ -1,8 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
-import { HeaderComponent } from "src/app/shared/components/header/header.component";
+import { IonContent, IonIcon } from '@ionic/angular/standalone';
 import { PacientesService } from 'src/app/core/services/pacientes.service';
 import { ResponseServer } from 'src/app/core/models/response-server';
 import { PacienteAnalisis } from 'src/app/core/models/paciente/pacientes-analisis';
@@ -10,25 +9,40 @@ import { ItemsResultComponent } from "src/app/components/resultado/items-result/
 import { IonSearchbar } from '@ionic/angular/standalone';
 import { UtilsService } from 'src/app/core/services/utils.service';
 import { ListResultComponent } from 'src/app/components/resultado/list-result/list-result.component';
+import { CardComponent } from "src/app/shared/components/card/card.component";
+import { searchOutline } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-result-paciente',
   templateUrl: './result-paciente.page.html',
   styleUrls: ['./result-paciente.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, FormsModule, HeaderComponent, ItemsResultComponent, IonGrid, IonRow, IonCol, IonSearchbar]
+  imports: [IonContent, CommonModule, FormsModule, IonIcon, ItemsResultComponent, IonSearchbar, CardComponent]
 })
 export class ResultPacientePage {
-
-
   lstResultadoAnalisis = signal<PacienteAnalisis[]>([])
   lstResultadoAnalisisFilter = signal<PacienteAnalisis[]>([])
+
+  searchOpenClose = signal<boolean>(false)
 
   private utilsService = inject(UtilsService)
   private pacienteServices = inject(PacientesService)
 
+  constructor() {
+    addIcons({ searchOutline })
+  }
+
   ionViewWillEnter() {
     this.loadPacienteAnalisis()
+  }
+
+  search() {
+    if (this.searchOpenClose()) {
+      this.searchOpenClose.set(false)
+    } else {
+      this.searchOpenClose.set(true)
+    }
   }
 
   handleInput(event: Event) {
@@ -68,6 +82,5 @@ export class ResultPacientePage {
         breakpoints: [0, 0.25, 0.5, 0.75, 1]
       })
     }
-
   }
 }

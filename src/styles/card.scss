@@ -1,6 +1,7 @@
 /* === CARD  ===*/
 .card-login-img,
 .card-patient-history,
+.card-patient-result,
 .card-form-patient,
 .card-form-ai {
   width: 100% !important;
@@ -12,7 +13,8 @@
   }
 }
 
-.card-patient-history {
+.card-patient-history,
+.card-patient-result {
   background: #ffffff !important;
   flex-direction: column !important;
   height: 100%;
@@ -40,11 +42,25 @@
 }
 
 /* === CARD -RESULT ===*/
-
 .card-result-poi {
   cursor: pointer !important;
 }
 
 .card-result-def {
   cursor: default !important;
+}
+
+ion-card {
+  --background: #dddee3;
+  margin: 0;
+  padding: 0;
+  border-radius: 12px;
+
+  ion-card-title {
+    --color: #17223c;
+  }
+
+  ion-card-subtitle {
+    --color: #17223c;
+  }
 }

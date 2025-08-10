@@ -8,8 +8,6 @@ import { IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent }
   imports: [IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent],
 })
 export class CardIonicComponent implements OnInit {
-
-
   title = input<string>()
   subtitle = input<string>()
 

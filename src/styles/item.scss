@@ -12,8 +12,12 @@
 
   ion-item-sliding {
     border-radius: 12px;
+    overflow: hidden;
+    background: transparent !important;
     ion-item {
-      --background: #fff; /* Fondo blanco tipo card */
+      overflow: hidden;
+      background: transparent !important;
+      --background: #dddee3; /* Fondo tipo card */
       --border-radius: 12px;
       --padding-start: 12px;
       --inner-padding-end: 12px;
@@ -21,17 +25,19 @@
       --inner-border-color: transparent;
       --border-color: transparent;
       --border-width: 0;
+
+      /* quitar highlight / hover / focus */
       --background-activated: transparent;
-      --background-focused: transparent;
       --background-hover: transparent;
+      --background-focused: transparent;
 
       border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
 
-      border: 1px solid rgba(0, 0, 0, 0.05); /* Borde suave */
-
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      &.ion-activated {
+        /* quitar solo sombra extra, no tocar transform X */
+        box-shadow: none;
+        transition: box-shadow 0.08s linear;
       }
 
       ion-ripple-effect {
@@ -47,10 +53,4 @@
       border-radius: 20px;
     }
   }
-}
-
-.item-inner {
-  border-width: 0 !important;
-  border-style: 0 !important;
-  border-color: 0 !important;
 }
