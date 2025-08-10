@@ -1,6 +1,5 @@
 import { ResponseServer } from './../../../core/models/response-server';
 import { Component, computed, CUSTOM_ELEMENTS_SCHEMA, inject, input, Input, OnInit, signal } from '@angular/core';
-import { HeaderComponent } from "src/app/shared/components/header/header.component";
 import { IonContent } from "@ionic/angular/standalone";
 import { ButtonComponent } from "src/app/shared/components/button/button.component";
 import { UtilsService } from 'src/app/core/services/utils.service';
@@ -11,15 +10,15 @@ import { IonTextarea } from '@ionic/angular/standalone';
 import { AnalisisResponse } from 'src/app/core/models/analisis/analisis-response';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { PacientesService } from 'src/app/core/services/pacientes.service';
+import { CardComponent } from "src/app/shared/components/card/card.component";
 @Component({
   selector: 'app-form-capture-ia',
   templateUrl: './form-capture-ia.component.html',
   styleUrls: ['./form-capture-ia.component.scss'],
-  imports: [HeaderComponent, IonTextarea, IonContent, ButtonComponent, ReactiveFormsModule, ImagenComponent],
+  imports: [IonTextarea, IonContent, ButtonComponent, ReactiveFormsModule, ImagenComponent, CardComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class FormCaptureIaComponent implements OnInit {
-
   private utilsService = inject(UtilsService)
   private alterService = inject(AlertService)
   private pacienteService = inject(PacientesService)
@@ -27,13 +26,10 @@ export class FormCaptureIaComponent implements OnInit {
   imagen = signal<string>('https://ionicframework.com/docs/img/demos/avatar.svg')
   imagenes = signal<string[]>([])
 
-
-
   @Input() paciente?: Paciente
+  namePatient = computed(() => this.paciente?.nombre + ' ' + this.paciente?.apellido)
+  document = computed(() => this.paciente?.dni)
 
-  title = computed(() => {
-    return this.paciente?.nombre + ' ' + this.paciente?.apellido + ' - ' + this.paciente?.dni
-  })
   formulario !: FormGroup
   form = inject(FormBuilder)
 
@@ -80,5 +76,9 @@ export class FormCaptureIaComponent implements OnInit {
     } else {
       this.alterService.AlertError('Error', 'Debes agregar la descripción del analisis')
     }
+  }
+
+  closeModal() {
+    this.utilsService.dismissModal()
   }
 }

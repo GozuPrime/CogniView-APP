@@ -1,37 +1,60 @@
-<app-header [title]="title()" [isModal]="true" />
-<ion-content [fullscreen]="false">
+<ion-content [fullscreen]="false" class="form-ion-content">
   <form method="post" enctype="multipart/form-data" [formGroup]="formulario" (submit)="submitAnalisis()">
+    <app-card class="card-form-ai">
 
-    @if(imagenes().length> 0){
-    <swiper-container effect="cards" grab-cursor="true">
-      @for (item of imagenes(); track item; let index = $index) {
-      <swiper-slide>
-        <div class="container-logo">
-          <app-imagen [url]="item" alt="Imagen de analizar" />
+      <div class="header-modal">
+        <div class="title-pages">
+          <p>Analisis</p>
+          <p>del Paciente</p>
         </div>
-        <button class="btn-delete-img" (click)="eliminarImagen(index)">
-          <ion-icon name="close-outline" class="icon-back" slot="icon-only"></ion-icon>
-        </button>
-      </swiper-slide>
-      }
-    </swiper-container>
-    }@else {
-    <div class="logo-empy">
-      <div class="container-logo-empy">
-        <app-imagen [url]="imagen()" alt="Imagen de analizar" />
+        <div class="icon-close">
+          <ion-icon name="close-outline" (click)="closeModal()"></ion-icon>
+        </div>
       </div>
-    </div>
-    }
 
-    <ion-textarea label="Descripción del Paciente" formControlName="descripcion" labelPlacement="floating"
-      fill="solid"></ion-textarea>
 
-    <div class="buttom-forms">
+      <div class="content-form">
+
+        <div class="patient-details">
+          <p>{{document()}}</p>
+          <p>{{namePatient()}}</p>
+        </div>
+
+        @if(imagenes().length> 0){
+        <swiper-container effect="cards" grab-cursor="true">
+          @for (item of imagenes(); track item; let index = $index) {
+          <swiper-slide>
+            <div class="container-logo">
+              <app-imagen [url]="item" alt="Imagen de analizar" />
+            </div>
+            <button class="btn-delete-img" (click)="eliminarImagen(index)">
+              <ion-icon name="close-outline" class="icon-back" slot="icon-only"></ion-icon>
+            </button>
+          </swiper-slide>
+          }
+        </swiper-container>
+        }@else {
+        <div class="logo-empy">
+          <div class="container-logo-empy">
+            <app-imagen [url]="imagen()" alt="Imagen de analizar" />
+          </div>
+        </div>
+        }
+
+        <ion-textarea label="Descripción del Paciente" formControlName="descripcion" labelPlacement="floating"
+          fill="solid"></ion-textarea>
+      </div>
+
+
+    </app-card>
+
+    <div class="buttom-form">
       @if(imagenes().length <= 2){ <!-- Botón para capturar imagen -->
-        <app-button name="📷 Capturar Imagen 📷" type="button" class="btn-form" (click)="openCamara()" />
+        <app-button name="📷 Capturar Imagen 📷" type="button" class="btn-form" (click)="openCamara()"
+          [differentColor]="true" />
         }@else{
         <!-- Botón para analizar imagen -->
-        <app-button name="🧠 Analizar Imagen 🧠" type="submit" class="btn-form" />
+        <app-button name="🧠 Analizar Imagen 🧠" type="submit" class="btn-form" [differentColor]="true" />
         }
     </div>
   </form>

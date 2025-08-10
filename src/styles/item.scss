@@ -1,0 +1,56 @@
+.item-list {
+  display: flex;
+  flex-direction: column;
+  -webkit-margin-start: 0 !important;
+  margin-inline-start: 0 !important;
+  -webkit-margin-end: 0 !important;
+  margin-inline-end: 0 !important;
+  margin-top: 0 !important;
+  margin-inline: 1rem !important;
+  /* margin-bottom: 16px; */
+  gap: 10px !important;
+
+  ion-item-sliding {
+    border-radius: 12px;
+    ion-item {
+      --background: #fff; /* Fondo blanco tipo card */
+      --border-radius: 12px;
+      --padding-start: 12px;
+      --inner-padding-end: 12px;
+      --inner-border-width: 0;
+      --inner-border-color: transparent;
+      --border-color: transparent;
+      --border-width: 0;
+      --background-activated: transparent;
+      --background-focused: transparent;
+      --background-hover: transparent;
+
+      border-radius: 12px;
+
+      border: 1px solid rgba(0, 0, 0, 0.05); /* Borde suave */
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      ion-ripple-effect {
+        display: none;
+      }
+    }
+  }
+
+  ion-item-options {
+    padding: 3px;
+    gap: 2px;
+    ion-item-option {
+      border-radius: 20px;
+    }
+  }
+}
+
+.item-inner {
+  border-width: 0 !important;
+  border-style: 0 !important;
+  border-color: 0 !important;
+}

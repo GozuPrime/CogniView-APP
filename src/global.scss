@@ -3,6 +3,7 @@
 @use "./styles/input.scss";
 @use "./styles/button.scss";
 @use "./styles/modal.scss";
+@use "./styles/item.scss";
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
@@ -100,12 +101,18 @@ ion-content::-webkit-scrollbar {
   --keyboard-offset: 0px !important;
 }
 
+.container-logo-patient {
+  display: flex;
+  justify-content: center;
+}
+
 .container-logo {
   width: 100%;
   display: flex;
   justify-content: center;
   .logo,
-  .logo-intro {
+  .logo-intro,
+  .logo-patient {
     border-radius: 50%;
     overflow: hidden;
   }
@@ -117,6 +124,10 @@ ion-content::-webkit-scrollbar {
   .logo-intro {
     width: 180px;
     height: 180px;
+  }
+  .logo-patient {
+    width: 80px;
+    height: 80px;
   }
 }
 

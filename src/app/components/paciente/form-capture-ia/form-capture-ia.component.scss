@@ -1,72 +1,85 @@
-
-
 form {
+  height: 88%;
 
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  position: relative;
+  .content-form {
+    margin-inline: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 
-  swiper-container {
-    width: 240px;
-    height: 320px;
-    margin: 0 auto;
+    .patient-details {
+      text-align: center;
+      color: #ffffff;
 
-    swiper-slide {
-      z-index: 40;
-      position: relative; /* importante para posicionar el botón internamente */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 18px;
-      font-size: 22px;
-      font-weight: bold;
-      color: #fff;
+      p:nth-child(2) {
+        text-transform: uppercase;
+      }
+    }
 
-      .container-logo {
+    swiper-container {
+      width: 240px;
+      height: 320px;
+      margin: 0 auto;
+
+      swiper-slide {
         z-index: 40;
+        position: relative; /* importante para posicionar el botón internamente */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        font-size: 22px;
+        font-weight: bold;
+        color: #fff;
+
+        .container-logo {
+          z-index: 40;
+          overflow: hidden;
+          width: 240px;
+          height: 320px;
+          border-radius: 12px;
+        }
+
+        .btn-delete-img {
+          z-index: 80;
+          position: absolute;
+          top: 6px;
+          right: 6px;
+          color: white;
+          background-color: red;
+          border: none;
+          border-radius: 50%;
+          width: 28px;
+          height: 28px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+
+    .logo-empy {
+      display: flex;
+      justify-content: center;
+
+      .container-logo-empy {
         overflow: hidden;
         width: 240px;
         height: 320px;
         border-radius: 12px;
       }
-
-      .btn-delete-img {
-        z-index: 80;
-        position: absolute;
-        top: 6px;
-        right: 6px;
-        color: white;
-        background-color: red;
-        border: none;
-        border-radius: 50%;
-        width: 28px;
-        height: 28px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
     }
   }
 
-  .logo-empy {
-    display: flex;
-    justify-content: center;
-
-    .container-logo-empy {
-      overflow: hidden;
-      width: 240px;
-      height: 320px;
-      border-radius: 12px;
-    }
+  ion-textarea {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
   }
 
   .buttom-form {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
     width: 100%;
-    display: flex;
-    .btn-form {
-      width: 100%;
-    }
   }
 }

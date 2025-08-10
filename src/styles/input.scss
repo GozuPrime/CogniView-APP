@@ -3,23 +3,35 @@
 //#ffffff
 //#f6f7fb
 
-ion-input {
+ion-input,
+ion-textarea {
   border-radius: 30px !important;
   color: black !important;
   overflow: hidden !important;
 }
 
-.label-text.sc-ion-input-md {
+ion-textarea {
+  --background: #ffffff !important;
+}
+
+
+.label-text.sc-ion-input-md,
+.label-text-wrapper.sc-ion-textarea-md {
   color: black !important;
 }
 
-.input-wrapper.sc-ion-input-md {
+.input-wrapper.sc-ion-input-md,
+.textarea-wrapper-inner.sc-ion-textarea-md {
   background-color: #ffffff !important;
-  border: 1px solid #f6f7fb !important;
+  border: 1px solid #ffffff !important;
   border-radius: 30px !important;
 }
 .input-highlight.sc-ion-input-md {
   background: transparent !important;
+}
+
+.textarea-fill-solid.sc-ion-textarea-md-h .textarea-wrapper.sc-ion-textarea-md {
+  border-bottom: transparent !important;
 }
 
 ion-content {
@@ -36,7 +48,6 @@ input.searchbar-input.sc-ion-searchbar-md {
   color: #17223c !important;
   background-color: #ffffff !important;
 }
-
 
 .patient-search {
   max-height: 0;
