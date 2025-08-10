@@ -1,8 +1,14 @@
-/* === CARD - LOGIN ===*/
+/* === CARD  ===*/
 .card-login-img,
-.card-patient-history {
+.card-patient-history,
+.card-form-patient {
   width: 100% !important;
   display: flex !important;
+  overflow: auto;
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .card-patient-history {
@@ -15,6 +21,12 @@
   ::-webkit-scrollbar {
     display: none;
   }
+}
+
+.card-form-patient {
+  background: #17223c !important;
+  height: 100%;
+  border-radius: 0 0 60px 60px !important;
 }
 
 .card-login-img {

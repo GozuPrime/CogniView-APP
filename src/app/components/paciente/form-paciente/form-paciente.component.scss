@@ -3,12 +3,14 @@
 }
 
 form {
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  position: relative;
-  height: calc(100% - 22px);
+  height: 80%;
+  .content-form {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-inline: 1.2rem;
+  }
 
   .buttom-form {
     position: absolute;

@@ -2,6 +2,7 @@
 @use "./styles/card.scss";
 @use "./styles/input.scss";
 @use "./styles/button.scss";
+@use "./styles/modal.scss";
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
@@ -55,6 +56,13 @@ ion-content {
   background: #17223c !important;
   --background: #17223c !important;
   scrollbar-width: none;
+}
+
+.form-ion-content {
+  background: #ffffff !important;
+  --background: #ffffff !important;
+  scrollbar-width: none;
+  height: 100% !important;
 }
 
 p {

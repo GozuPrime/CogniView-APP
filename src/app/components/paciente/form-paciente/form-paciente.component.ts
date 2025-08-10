@@ -9,12 +9,15 @@ import { AlertService } from 'src/app/core/services/alert.service';
 import { PacientesService } from 'src/app/core/services/pacientes.service';
 import { UtilsService } from 'src/app/core/services/utils.service';
 import { ButtonComponent } from "src/app/shared/components/button/button.component";
-import { HeaderComponent } from "src/app/shared/components/header/header.component";
+import { CardComponent } from "src/app/shared/components/card/card.component";
+import { addIcons } from 'ionicons';
+import { closeOutline } from 'ionicons/icons';
+import { IonIcon } from '@ionic/angular/standalone';
 @Component({
   selector: 'app-form-paciente',
   templateUrl: './form-paciente.component.html',
   styleUrls: ['./form-paciente.component.scss'],
-  imports: [IonInput, ButtonComponent, ReactiveFormsModule, HeaderComponent, IonContent],
+  imports: [IonInput, ButtonComponent, ReactiveFormsModule, IonContent, CardComponent, IonIcon],
 })
 export class FormPacienteComponent implements OnInit {
   private alertService = inject(AlertService)
@@ -29,6 +32,8 @@ export class FormPacienteComponent implements OnInit {
   formulario !: FormGroup
   form = inject(FormBuilder)
   constructor() {
+
+    addIcons({ closeOutline })
     this.formulario = this.form.group({
       nombre: new FormControl('', [Validators.required]),
       apellido: new FormControl('', [Validators.required]),
@@ -84,5 +89,9 @@ export class FormPacienteComponent implements OnInit {
     } else {
       this.alertService.AlertError('Error', 'Completar todos los campos del formulario del paciente.')
     }
+  }
+
+  closeModal(){
+    this.utilsServices.dismissModal()
   }
 }
