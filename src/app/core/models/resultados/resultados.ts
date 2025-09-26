@@ -1,7 +1,7 @@
 export interface Resultados {
   idResultado: string;
   imagen: string;
-  grado: string;
+  grados: string;
   confianza: string;
   fecha: string;
 }

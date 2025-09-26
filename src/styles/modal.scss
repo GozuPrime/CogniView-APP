@@ -21,3 +21,18 @@
     }
   }
 }
+
+.details-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  gap:10px;
+}
+
+.body-modal{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  margin-inline: .9rem;
+}

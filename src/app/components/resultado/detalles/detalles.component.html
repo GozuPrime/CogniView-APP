@@ -1,0 +1,50 @@
+<ion-content [fullscreen]="true">
+
+
+  <app-card class="card-details">
+    <div class="header-modal">
+      <div class="title-pages">
+        <p>Detalles</p>
+        <p>de Resultados</p>
+      </div>
+      <div class="icon-close">
+        <ion-icon name="close-outline" (click)="closeModal()"></ion-icon>
+      </div>
+    </div>
+
+    <div class="body-modal">
+      <div class="pacient">
+        <p>{{event?.Paciente?.dni}}</p>
+        <p>{{event?.Paciente?.apellido}} {{event?.Paciente?.nombre}}</p>
+      </div>
+
+      <div class="result">
+        <!-- Iteramos análisis -->
+        @for (analisis of event?.AnalisisResultados; track $index) {
+        <p>{{analisis.Analisis.descripcion}}</p>
+        <!-- Iteramos resultados dentro del análisis -->
+        @for (res of analisis.Resultados; track res.idResultado) {
+        <ion-card mode="ios">
+          <div class="reseult-content">
+            <div class="imagen">
+              <app-imagen alt="resultado" [url]="res.imagen" />
+            </div>
+            <div class="information">
+              <div class="title">
+                Información
+              </div>
+              <div class="content">
+                <p>Grado: {{res.grados}}</p>
+                <p>Confiaza: {{res.confianza+'%'}}</p>
+              </div>
+            </div>
+          </div>
+        </ion-card>
+        }
+        }
+      </div>
+    </div>
+
+  </app-card>
+
+</ion-content>

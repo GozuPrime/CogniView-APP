@@ -11,6 +11,8 @@ import { AnalisisResponse } from 'src/app/core/models/analisis/analisis-response
 import { AlertService } from 'src/app/core/services/alert.service';
 import { PacientesService } from 'src/app/core/services/pacientes.service';
 import { CardComponent } from "src/app/shared/components/card/card.component";
+import { addIcons } from 'ionicons';
+import { closeOutline } from 'ionicons/icons';
 @Component({
   selector: 'app-form-capture-ia',
   templateUrl: './form-capture-ia.component.html',
@@ -34,6 +36,7 @@ export class FormCaptureIaComponent implements OnInit {
   form = inject(FormBuilder)
 
   constructor() {
+    addIcons({closeOutline})
     this.formulario = this.form.group({
       descripcion: new FormControl('', [Validators.required])
     })

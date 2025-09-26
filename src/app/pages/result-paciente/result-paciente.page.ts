@@ -12,6 +12,7 @@ import { ListResultComponent } from 'src/app/components/resultado/list-result/li
 import { CardComponent } from "src/app/shared/components/card/card.component";
 import { searchOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
+import { DetallesComponent } from 'src/app/components/resultado/detalles/detalles.component';
 
 @Component({
   selector: 'app-result-paciente',
@@ -63,10 +64,14 @@ export class ResultPacientePage {
   }
 
   loadPacienteAnalisis() {
-    this.pacienteServices.pacientes_analisis_sellst().subscribe((event: ResponseServer) => {
-      if (event.exito) {
-        this.lstResultadoAnalisis.set(event._analisisPacientes as PacienteAnalisis[])
-        this.lstResultadoAnalisisFilter.set(event._analisisPacientes as PacienteAnalisis[])
+    this.pacienteServices.pacientes_analisis_sellst().subscribe({
+      next: (event: ResponseServer) => {
+        if (event.exito) {
+          this.lstResultadoAnalisis.set(event._analisisPacientes as PacienteAnalisis[])
+          this.lstResultadoAnalisisFilter.set(event._analisisPacientes as PacienteAnalisis[])
+        }
+      }, error: (err) => {
+
       }
     })
   }
@@ -81,6 +86,30 @@ export class ResultPacientePage {
         initialBreakpoint: 0.25,
         breakpoints: [0, 0.25, 0.5, 0.75, 1]
       })
+
+      if (data?.id) {
+
+        const analisisSeleccionado = event.AnalisisResultados.find(
+          (x) => x.Analisis.idAnalisis === data.id
+        );
+
+        if (analisisSeleccionado) {
+          const eventFiltrado: PacienteAnalisis = {
+            Paciente: event.Paciente,
+            AnalisisResultados: [analisisSeleccionado]
+          };
+
+          console.log(eventFiltrado);
+
+          const result = await this.utilsService.presentModal({
+            component: DetallesComponent,
+            componentProps: { event:eventFiltrado },
+            animated: true
+          })
+        }
+
+
+      }
     }
   }
 }

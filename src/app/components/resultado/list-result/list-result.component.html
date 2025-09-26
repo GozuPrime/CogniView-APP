@@ -4,7 +4,10 @@
     <ion-item slot="header" color="light">
       <ion-label>{{item.Analisis.fecha | dateFormat}}</ion-label>
     </ion-item>
-    <div class="ion-padding" slot="content">{{item.Analisis.descripcion}}</div>
+    <div class="ion-padding details-info" slot="content">
+      {{item.Analisis.descripcion}}
+      <app-button type="button" name="Ver Informe" [differentColor]="true" (click)="openAnalysis(item.Analisis.idAnalisis)" />
+    </div>
   </ion-accordion>
   }
 </ion-accordion-group>

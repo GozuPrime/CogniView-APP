@@ -1,0 +1,58 @@
+.body-modal {
+  .pacient {
+    p {
+      text-align: center;
+      color: white !important;
+    }
+  }
+
+  .result {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .reseult-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      .imagen {
+        width: 150px;
+        height: 200px;
+        overflow: hidden;
+      }
+      .information {
+        text-align: center;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .title {
+          text-align: center;
+          font-size: 1.2rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          color: black !important;
+          // &::after {
+          //   content: "";
+          //   display: block;
+          //   width: 100%;
+          //   height: 2px;
+          //   background-color: black !important;
+          // }
+        }
+
+        .content {
+          p{
+            color: black !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+p {
+  color: white !important;
+}
