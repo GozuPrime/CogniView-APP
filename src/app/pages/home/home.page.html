@@ -1,0 +1,50 @@
+<ion-content [fullscreen]="true">
+  <app-card class="card-patient-history">
+    <div class="header-pages-home">
+      <div class="title-pages">
+        <p>Bienvenido a</p>
+        <p>CogniView</p>
+      </div>
+
+      <div class="content">
+        <ion-text>Tu aplicación movíl para evaluar la salud mental en adolescentes.</ion-text>
+      </div>
+
+      <ion-card>
+        <ion-item lines="none">
+          <ion-icon slot="start" name="people-sharp"></ion-icon>
+          <ion-label>Historial de Pacientes</ion-label>
+          <ion-button slot="end" shape="round" (click)="redirect('/home/history-paciente')">
+            <ion-icon slot="icon-only" name="caret-forward-sharp"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-item lines="none">
+          <ion-icon slot="start" name="pulse-sharp"></ion-icon>
+          <ion-label>Precición del Sistema</ion-label>
+          <ion-chip slot="end" color="secondary">{{confianza()}}%</ion-chip>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-item lines="none">
+          <ion-icon slot="start" name="analytics-sharp"></ion-icon>
+          <ion-label>Rendimiento</ion-label>
+        </ion-item>
+        @for (item of listGrado(); track $index) {
+        <ion-item>
+          <ion-label>{{item.grado}}</ion-label>
+          <ion-chip slot="end" [color]="getColor(item.grado)">{{item.precision}}%</ion-chip>
+        </ion-item>
+        }@empty {
+        <ion-item>
+          <ion-label style="text-align: center;">No cuentas con analisis.</ion-label>
+        </ion-item>
+        }
+      </ion-card>
+
+    </div>
+  </app-card>
+</ion-content>

@@ -18,8 +18,12 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'history-paciente',
+        redirectTo: 'home',
         pathMatch: 'full'  // 👈 importante
+      },
+      {
+        path: 'home',
+        loadComponent: () => import('./pages/home/home.page').then(m => m.HomePage)
       },
       {
         path: 'history-paciente',
@@ -37,4 +41,9 @@ export const routes: Routes = [
     redirectTo: 'intro',
     pathMatch: 'full',
   },
+  {
+    path: 'home',
+    loadComponent: () => import('./pages/home/home.page').then(m => m.HomePage)
+  },
+
 ];

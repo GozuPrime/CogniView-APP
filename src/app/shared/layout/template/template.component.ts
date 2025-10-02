@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { IonIcon, IonTabBar, IonTabButton, IonTabs, IonContent, IonMenu } from '@ionic/angular/standalone';
 
 import { addIcons } from 'ionicons';
-import { peopleOutline, clipboardOutline } from 'ionicons/icons';
+import { peopleOutline, clipboardOutline, homeOutline } from 'ionicons/icons';
 import { ImagenComponent } from "../../components/imagen/imagen.component";
 import { ButtonComponent } from "../../components/button/button.component";
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -20,7 +20,7 @@ export class TemplateComponent {
   private router = inject(Router)
   private utilService = inject(UtilsService)
   constructor() {
-    addIcons({ peopleOutline, clipboardOutline });
+    addIcons({ peopleOutline, clipboardOutline, homeOutline });
   }
 
   cerrarSesion() {

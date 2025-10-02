@@ -3,16 +3,20 @@
   <ion-content class="ion-padding">
     <div class="container-logo">
       <div class="logo">
-        <app-imagen alt="'Logo App'" url="assets/icon/favicon.png"/>
+        <app-imagen alt="'Logo App'" url="assets/icon/favicon.png" />
       </div>
     </div>
 
-    <app-button type="button" name="Cerrar Sesion" (click)="cerrarSesion()"/>
+    <app-button type="button" name="Cerrar Sesion" (click)="cerrarSesion()" />
   </ion-content>
 </ion-menu>
 
 <ion-tabs id="main-content">
   <ion-tab-bar slot="bottom" mode="md">
+    <ion-tab-button tab="home">
+      <ion-icon name="home-outline"></ion-icon>
+      Home
+    </ion-tab-button>
     <ion-tab-button tab="history-paciente">
       <ion-icon name="people-outline"></ion-icon>
       Pacientes

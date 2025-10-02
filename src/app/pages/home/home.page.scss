@@ -1,0 +1,24 @@
+ion-card {
+  ion-item {
+    ion-icon {
+      margin-right: 10px !important;
+      --color: #17223c !important;
+    }
+
+    ion-label {
+    }
+
+    ion-button {
+      width: max-content;
+      background: #17223c !important;
+      --background: #17223c !important;
+      --color: #fdfdfd !important;
+      --background-activated: #17223c !important;
+      --background-hover: #17223c !important;
+      ion-icon {
+        margin: 0 !important;
+      }
+    }
+  }
+}
+

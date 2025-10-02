@@ -7,7 +7,7 @@ export const notAuthGuard: CanActivateFn = (route, state) => {
   if (!inject(AuthService).isLoggeIn()) {
     return true
   }
-  inject(Router).navigate(['/home/history-paciente'])
+  inject(Router).navigate(['/home/home'])
   return false
 
 };

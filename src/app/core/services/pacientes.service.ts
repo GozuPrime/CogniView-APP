@@ -45,4 +45,11 @@ export class PacientesService {
     return this.https.get<ResponseServer>(this.url + 'paciente/analisis/')
   }
 
+  analisis_precisiones(): Observable<ResponseServer> {
+    return this.https.get<ResponseServer>(this.url + 'analisis/precision-grado')
+  }
+
+  promedio_Confianza(): Observable<ResponseServer> {
+    return this.https.get<ResponseServer>(this.url + 'analisis/promedio-confianza')
+  }
 }
