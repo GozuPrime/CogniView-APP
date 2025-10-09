@@ -43,6 +43,33 @@
           // }
         }
 
+    .recomendacion {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      margin-top: 8px;
+      text-align: left;
+      p {
+        color: #000 !important;
+      }
+    }
+
+      .recomendacion.leve {
+        border-left: 5px solid #4caf50; /* Verde */
+        background-color: rgba(76, 175, 80, 0.1);
+      }
+
+      .recomendacion.moderado {
+        border-left: 5px solid #ff9800; /* Naranja */
+        background-color: rgba(255, 152, 0, 0.1);
+      }
+
+      .recomendacion.grave {
+        border-left: 5px solid #f44336; /* Rojo */
+        background-color: rgba(244, 67, 54, 0.1);
+      }
+
         .content {
           p{
             color: black !important;

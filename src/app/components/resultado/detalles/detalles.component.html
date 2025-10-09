@@ -29,17 +29,24 @@
             <div class="imagen">
               <app-imagen alt="resultado" [url]="res.imagen" />
             </div>
+
             <div class="information">
               <div class="title">
-                Información
+                INFORMACIÓN
               </div>
               <div class="content">
-                <p>Grado: {{res.grados}}</p>
-                <p>Confiaza: {{res.confianza+'%'}}</p>
+                <p><strong>Grado:</strong> {{ res.grados }}</p>
+                <p><strong>Confianza:</strong> {{ res.confianza }}%</p>
+                <p><strong>Análisis:</strong> {{ obtenerDescripcion(+res.confianza) }}</p>
+              </div>
+
+              <div class="recomendacion" [ngClass]="res.grados.toLowerCase()">
+                <p><strong>Recomendación:</strong> {{ obtenerRecomendacion(res.grados) }}</p>
               </div>
             </div>
           </div>
         </ion-card>
+
         }
         }
       </div>
