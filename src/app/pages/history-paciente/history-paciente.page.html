@@ -1,18 +1,15 @@
 <ion-content [fullscreen]="true">
   <app-card class="card-patient-history">
 
-    <!-- Encabezado -->
+    <!-- 🔹 Encabezado -->
     <div class="header-pages-patient-history">
       <div class="title-pages">
         <p>Historial</p>
         <p>de Pacientes</p>
       </div>
-      <div class="icon-search">
-        <ion-icon class="icon-search" name="search-outline" (click)="search()"></ion-icon>
-      </div>
     </div>
 
-    <!-- Tarjetas de estadísticas animadas -->
+    <!-- 🔹 Tarjetas estadísticas -->
     <div class="stats-container">
       <div class="stat-card">
         <ion-icon name="people-outline"></ion-icon>
@@ -31,14 +28,14 @@
       </div>
     </div>
 
-    <!-- Últimos pacientes registrados -->
-    <div class="recent-patients">
+    <!-- 🔹 Últimos pacientes -->
+    <div class="recent-patients" *ngIf="listPacienteFiltro().length > 0">
       <p class="subtitle">Últimos Pacientes Registrados</p>
       <ion-list [inset]="true" mode="md" class="recent-list">
-        @for (item of listPacienteFiltro().slice(0, 3); track $index) {
+        @for (item of listUltimosPacientes(); track $index) {
         <ion-item>
-          <ion-avatar aria-hidden="true" slot="start">
-            <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          <ion-avatar slot="start">
+            <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
           </ion-avatar>
           <ion-label>
             <div class="name">{{item.nombre}} {{item.apellido}}</div>
@@ -49,18 +46,23 @@
       </ion-list>
     </div>
 
-    <!-- Buscador -->
-    <div class="patient-search" [class.open-patient-search]="searchOpenClose()">
-      <ion-searchbar class="search-input" (ionInput)="handleInput($event)" placeholder="Buscar Paciente"></ion-searchbar>
+    <!-- 🔹 Buscador (debajo de los últimos pacientes) -->
+    <div class="search-container fade-in">
+      <ion-searchbar
+        mode="ios"
+        placeholder="Buscar paciente por nombre, apellido o DNI"
+        debounce="300"
+        (ionInput)="handleInput($event)">
+      </ion-searchbar>
     </div>
 
-    <!-- Lista completa de pacientes -->
-    <ion-list [inset]="true" mode="md" class="item-list fade-in-list">
+    <!-- 🔹 Lista completa de pacientes -->
+    <ion-list [inset]="true" mode="md" class="item-list fade-in-list" *ngIf="listPacienteFiltro().length > 0">
       @for (item of listPacienteFiltro(); track $index) {
       <ion-item-sliding>
         <ion-item>
-          <ion-avatar aria-hidden="true" slot="start">
-            <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          <ion-avatar slot="start">
+            <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
           </ion-avatar>
           <ion-label class="info-paciente">
             <div class="name">{{item.nombre}} {{item.apellido}}</div>
@@ -79,10 +81,14 @@
           </ion-item-option>
         </ion-item-options>
       </ion-item-sliding>
+      } @empty {
+      <ion-item lines="none">
+        <ion-label style="text-align:center; color:#17223c;">No hay pacientes registrados.</ion-label>
+      </ion-item>
       }
     </ion-list>
 
-    <!-- Botón agregar paciente -->
+    <!-- 🔹 Botón agregar paciente -->
     <ion-fab horizontal="end" vertical="bottom" slot="fixed">
       <ion-fab-button mode="md" (click)="addUpdPaciente()">
         <ion-icon name="add"></ion-icon>

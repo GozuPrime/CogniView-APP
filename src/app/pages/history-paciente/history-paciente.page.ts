@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
   IonContent, IonFab, IonFabButton, IonIcon, IonItemOption, IonItemOptions,
-  IonLabel, IonItemSliding, IonItem, IonList, IonAvatar
+  IonLabel, IonItemSliding, IonItem, IonList, IonAvatar, IonSearchbar
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { add, trash, createOutline, cameraOutline, archiveOutline, searchOutline, peopleOutline, timeOutline } from 'ionicons/icons';
@@ -13,7 +13,6 @@ import { ResponseServer } from 'src/app/core/models/response-server';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { UtilsService } from 'src/app/core/services/utils.service';
 import { FormPacienteComponent } from 'src/app/components/paciente/form-paciente/form-paciente.component';
-import { IonSearchbar } from '@ionic/angular/standalone';
 import { FormCaptureIaComponent } from 'src/app/components/paciente/form-capture-ia/form-capture-ia.component';
 import { CardComponent } from "src/app/shared/components/card/card.component";
 
@@ -31,15 +30,16 @@ import { CardComponent } from "src/app/shared/components/card/card.component";
 })
 export class HistoryPacientePage {
 
-  listPacientes = signal<Paciente[]>([])
-  listPacienteFiltro = signal<Paciente[]>([])
-  totalPacientes = 0
-  ultimosIngresos = 0
-  searchOpenClose = signal<boolean>(false)
+  listPacientes = signal<Paciente[]>([]);
+  listPacienteFiltro = signal<Paciente[]>([]);
+  listUltimosPacientes = signal<Paciente[]>([]); // 👉 NUEVO arreglo solo para los últimos 3
 
-  private pacienteServices = inject(PacientesService)
-  private alertServices = inject(AlertService)
-  private utilsServices = inject(UtilsService)
+  totalPacientes = 0;
+  ultimosIngresos = 0;
+
+  private pacienteServices = inject(PacientesService);
+  private alertServices = inject(AlertService);
+  private utilsServices = inject(UtilsService);
 
   constructor() {
     addIcons({ add, trash, createOutline, cameraOutline, archiveOutline, searchOutline, peopleOutline, timeOutline });
@@ -47,27 +47,30 @@ export class HistoryPacientePage {
 
   ionViewWillEnter() {
     this.loadPacientes();
-    this.animateCounters();
   }
 
   loadPacientes() {
     this.pacienteServices.pacientes_sellst().subscribe((event: ResponseServer) => {
       if (event.exito) {
-        this.listPacientes.set(event._pacientes as Paciente[])
-        this.listPacienteFiltro.set(event._pacientes as Paciente[])
-        this.totalPacientes = this.listPacientes().length
-      }
-    })
-  }
+        const pacientes = event._pacientes as Paciente[];
+        this.listPacientes.set(pacientes);
+        this.listPacienteFiltro.set(pacientes);
+        this.totalPacientes = pacientes.length;
 
-  search() {
-    this.searchOpenClose.set(!this.searchOpenClose());
+        // 👉 Obtener los últimos 3 pacientes registrados
+        const ultimos = [...pacientes].slice(-3).reverse();
+        this.listUltimosPacientes.set(ultimos);
+
+        this.animateCounters();
+      }
+    });
   }
 
   handleInput(event: Event) {
     const target = event.target as HTMLIonSearchbarElement;
     const data = target.value?.toLowerCase() || '';
 
+    // 👉 Filtramos solo la lista general, no los últimos pacientes
     const filterList = this.listPacientes().filter((element) =>
       element.dni?.toLowerCase().includes(data) ||
       element.nombre?.toLowerCase().includes(data) ||
@@ -78,7 +81,7 @@ export class HistoryPacientePage {
   }
 
   animateCounters() {
-    const total = this.listPacientes().length || 31;
+    const total = this.listPacientes().length || 0;
     const ultimos = Math.min(total, 3);
 
     let count1 = 0, count2 = 0;
@@ -133,9 +136,13 @@ export class HistoryPacientePage {
         this.listPacientes.set(newList);
         this.listPacienteFiltro.set(newList);
       } else {
-        this.listPacientes.set([...pacientes, data.data[0]]);
-        this.listPacienteFiltro.set([...pacientes, data.data[0]]);
+        this.listPacientes.set([...pacientes, dataPaciente]);
+        this.listPacienteFiltro.set([...pacientes, dataPaciente]);
       }
+
+      // 👉 Actualizar también los últimos pacientes
+      const ultimos = [...this.listPacientes()].slice(-3).reverse();
+      this.listUltimosPacientes.set(ultimos);
     }
   }
 
@@ -148,6 +155,10 @@ export class HistoryPacientePage {
           const newList = this.listPacientes().filter(element => element.idPaciente !== paciente.idPaciente);
           this.listPacientes.set(newList);
           this.listPacienteFiltro.set(newList);
+
+          // 👉 Actualizar últimos pacientes
+          const ultimos = [...newList].slice(-3).reverse();
+          this.listUltimosPacientes.set(ultimos);
         } else {
           this.alertServices.AlertError('Error', event.mensajeError);
         }

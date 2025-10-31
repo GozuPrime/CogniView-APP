@@ -1,13 +1,4 @@
-/* === Estilos generales === */
-.content-patient {
-  margin: 1rem 0 2rem 0;
-  margin-inline: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* === Tarjetas de estadísticas animadas === */
+/* === Tarjetas estadísticas === */
 .stats-container {
   display: flex;
   justify-content: space-between;
@@ -33,47 +24,38 @@
   box-shadow: 0 6px 14px rgba(23, 34, 60, 0.45);
 }
 
-.stat-card ion-icon {
-  font-size: 28px;
-  color: #ffffff;
-}
-
-.stat-info {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.stat-number {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin: 0;
-}
-
-.stat-label {
-  font-size: 0.75rem;
-  opacity: 0.85;
-  margin: 0;
-}
-
 /* === Últimos pacientes === */
 .recent-patients {
   margin: 0 1rem 10px 1rem;
+  .subtitle {
+    font-weight: 600;
+    color: #17223c;
+    margin-bottom: 5px;
+  }
 }
 
-.recent-patients .subtitle {
-  font-weight: 600;
-  color: #17223c;
-  margin-bottom: 5px;
+/* === Buscador debajo de los últimos pacientes === */
+.search-container {
+  margin: 10px 1rem 20px 1rem;
+  animation: fadeIn 0.6s ease-in-out;
+
+  ion-searchbar {
+    --background: #f6f7fb;
+    --color: #17223c;
+    --placeholder-color: #6b6b6b;
+    --icon-color: #17223c;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(23, 34, 60, 0.2);
+  }
+
+  ion-searchbar:focus-within {
+    transform: scale(1.02);
+    box-shadow: 0 6px 14px rgba(23, 34, 60, 0.3);
+  }
 }
 
-.recent-list ion-item {
-  --background: #f6f7fb;
-  border-radius: 10px;
-  margin-bottom: 5px;
-}
-
-/* === Efectos en la lista completa === */
+/* === Lista de pacientes === */
 ion-item-sliding {
   transition: transform 0.2s ease-in-out;
 }
@@ -83,16 +65,18 @@ ion-item-sliding:hover {
 }
 
 /* === Botón flotante === */
-ion-fab ion-fab-button {
+ion-fab-button {
   --background: #17223c;
   --color: #f6f7fb;
-  --background-activated: #17223c;
-  --background-hover: #17223c;
 }
 
-/* === Animación de aparición de lista === */
+/* === Animaciones === */
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
 .fade-in-list ion-item-sliding {
-  animation: fadeIn 0.6s ease-in-out;
+  animation: fadeIn 0.8s ease-in-out;
 }
 
 @keyframes fadeIn {

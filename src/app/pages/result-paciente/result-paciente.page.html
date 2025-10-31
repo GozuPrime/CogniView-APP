@@ -1,25 +1,64 @@
 <ion-content [fullscreen]="true">
   <app-card class="card-patient-result">
+
+    <!-- Encabezado -->
     <div class="header-pages-patient-result">
       <div class="title-pages">
         <p>Resultados de</p>
         <p>los Pacientes</p>
       </div>
-      <div class="icon-search">
-        <ion-icon class="icon-search" name="search-outline" (click)="search()"></ion-icon>
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="stats-container">
+      <div class="stat-card">
+        <ion-icon name="analytics-outline"></ion-icon>
+        <div class="stat-info">
+          <p class="stat-number">{{ totalAnalisis }}</p>
+          <p class="stat-label">Total de<br>Resultados</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <ion-icon name="time-outline"></ion-icon>
+        <div class="stat-info">
+          <p class="stat-number">{{ lstUltimosAnalisis().length }}</p>
+          <p class="stat-label">Últimos<br>Análisis</p>
+        </div>
       </div>
     </div>
 
-    <div class="result-search" [class.open-result-search]="searchOpenClose()">
-      <ion-searchbar class="search-input" (ionInput)="handleInput($event)"
-        placeholder="Buscar Paciente"></ion-searchbar>
+    <!-- Últimos análisis -->
+    <div class="recent-results">
+      <p class="subtitle">Últimos Resultados de Análisis</p>
+      <ion-list mode="md">
+        @for (item of lstUltimosAnalisis(); track $index) {
+        <ion-item (click)="openDeailtResult(item)">
+          <ion-label>
+            <strong>{{ item?.Paciente?.nombre }} {{ item?.Paciente?.apellido }}</strong><br />
+            DNI: {{ item?.Paciente?.dni }}<br />
+            Análisis: {{ item?.AnalisisResultados?.[0]?.Analisis?.descripcion }}
+          </ion-label>
+        </ion-item>
+        }
+      </ion-list>
     </div>
 
+    <!-- 🔍 Buscador (siempre visible) -->
+    <div class="search-section">
+      <ion-searchbar
+        class="search-input"
+        (ionInput)="handleInput($event)"
+        placeholder="Buscar paciente por nombre, apellido o DNI">
+      </ion-searchbar>
+    </div>
 
-    <div class="content-result">
+    <!-- Lista de resultados -->
+    <div class="content-result fade-in-list">
       @for (item of lstResultadoAnalisisFilter(); track $index) {
         <app-items-result [pacienteAnalisis]="item" (click)="openDeailtResult(item)" />
       }
     </div>
+
   </app-card>
 </ion-content>
