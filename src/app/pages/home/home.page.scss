@@ -1,11 +1,19 @@
 ion-card {
+  margin-bottom: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
   ion-item {
     ion-icon {
       margin-right: 10px !important;
       --color: #17223c !important;
+      font-size: 1.4rem;
     }
 
     ion-label {
+      font-weight: 600;
+      color: #17223c;
     }
 
     ion-button {
@@ -15,9 +23,122 @@ ion-card {
       --color: #fdfdfd !important;
       --background-activated: #17223c !important;
       --background-hover: #17223c !important;
+      border-radius: 50%;
+      transition: transform 0.2s ease, background 0.2s ease;
+
       ion-icon {
         margin: 0 !important;
       }
+
+      &:hover {
+        transform: scale(1.1);
+        background: #1f2d4f !important;
+      }
+    }
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* 📊 Tarjeta de precisión */
+.progress-container {
+  margin: 0.5rem 1rem 1rem 1rem;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+
+  .progress-bar {
+    height: 100%;
+    background: #17223c;
+    border-radius: 5px;
+    transition: width 1s ease;
+  }
+}
+
+/* 🟢 Chips con efecto de pulso */
+.pulse-chip {
+  font-weight: 600;
+  color: #17223c;
+  background: #f0f4ff;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(23, 34, 60, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(23, 34, 60, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(23, 34, 60, 0);
+  }
+}
+
+/* 🎯 Rendimiento de grados */
+.grade-item {
+  ion-label {
+    font-weight: 600;
+    color: #1e293b;
+  }
+
+  ion-chip {
+    font-weight: 600;
+    transition: transform 0.2s ease;
+  }
+
+  ion-chip:hover {
+    transform: scale(1.1);
+  }
+}
+
+/* ✨ Animaciones suaves de aparición */
+.fade-in {
+  animation: fadeIn 1s ease-in;
+}
+
+.fade-in-chip {
+  animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🏠 Encabezado */
+.header-pages-home {
+  padding: 1.5rem;
+
+  .title-pages {
+    margin-bottom: 1.5rem;
+    text-align: left;
+
+    h1 {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #17223c;
+      margin-bottom: 0.3rem;
+    }
+
+    .app-name {
+      color: var(--ion-color-primary);
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: #4a5568;
+      margin-top: -0.3rem;
     }
   }
 }

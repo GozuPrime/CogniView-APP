@@ -14,7 +14,7 @@ import { AnalisisGrado } from 'src/app/core/models/analisis/analisis_grado';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [IonContent, CardComponent, IonText, IonIcon, IonCard, IonItem, IonLabel, IonButton, IonChip]
+  imports: [IonContent, CardComponent, IonIcon, IonCard, IonItem, IonLabel, IonButton, IonChip]
 })
 export class HomePage {
 

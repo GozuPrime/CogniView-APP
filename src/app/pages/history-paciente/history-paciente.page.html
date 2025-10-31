@@ -1,6 +1,7 @@
 <ion-content [fullscreen]="true">
   <app-card class="card-patient-history">
 
+    <!-- Encabezado -->
     <div class="header-pages-patient-history">
       <div class="title-pages">
         <p>Historial</p>
@@ -11,13 +12,50 @@
       </div>
     </div>
 
-    <div class="patient-search" [class.open-patient-search]="searchOpenClose()">
-      <ion-searchbar class="search-input" (ionInput)="handleInput($event)"
-        placeholder="Buscar Paciente"></ion-searchbar>
+    <!-- Tarjetas de estadísticas animadas -->
+    <div class="stats-container">
+      <div class="stat-card">
+        <ion-icon name="people-outline"></ion-icon>
+        <div class="stat-info">
+          <p class="stat-number">{{ totalPacientes }}</p>
+          <p class="stat-label">Pacientes<br>Registrados</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <ion-icon name="time-outline"></ion-icon>
+        <div class="stat-info">
+          <p class="stat-number">{{ ultimosIngresos }}</p>
+          <p class="stat-label">Últimos<br>Ingresos</p>
+        </div>
+      </div>
     </div>
 
-    <!-- ITEMS - PACIENTES -->
-    <ion-list [inset]="true" mode="md" class="item-list">
+    <!-- Últimos pacientes registrados -->
+    <div class="recent-patients">
+      <p class="subtitle">Últimos Pacientes Registrados</p>
+      <ion-list [inset]="true" mode="md" class="recent-list">
+        @for (item of listPacienteFiltro().slice(0, 3); track $index) {
+        <ion-item>
+          <ion-avatar aria-hidden="true" slot="start">
+            <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+          <ion-label>
+            <div class="name">{{item.nombre}} {{item.apellido}}</div>
+            <div class="document">{{item.dni}}</div>
+          </ion-label>
+        </ion-item>
+        }
+      </ion-list>
+    </div>
+
+    <!-- Buscador -->
+    <div class="patient-search" [class.open-patient-search]="searchOpenClose()">
+      <ion-searchbar class="search-input" (ionInput)="handleInput($event)" placeholder="Buscar Paciente"></ion-searchbar>
+    </div>
+
+    <!-- Lista completa de pacientes -->
+    <ion-list [inset]="true" mode="md" class="item-list fade-in-list">
       @for (item of listPacienteFiltro(); track $index) {
       <ion-item-sliding>
         <ion-item>
@@ -44,14 +82,11 @@
       }
     </ion-list>
 
-    <!-- BOTON PARA ABRIR EL MODAL DE CREAR/EDITAR PACIENTE -->
+    <!-- Botón agregar paciente -->
     <ion-fab horizontal="end" vertical="bottom" slot="fixed">
       <ion-fab-button mode="md" (click)="addUpdPaciente()">
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
     </ion-fab>
   </app-card>
-
-
-
 </ion-content>

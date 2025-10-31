@@ -1,50 +1,58 @@
 <ion-content [fullscreen]="true">
-  <app-card class="card-patient-history">
+  <app-card class="card-patient-history fade-in">
     <div class="header-pages-home">
       <div class="title-pages">
-        <p>Bienvenido a</p>
-        <p>CogniView</p>
+        <h1>Bienvenido a <span class="app-name">CogniView</span></h1>
+        <p class="subtitle">Tu aplicación móvil para evaluar la salud mental en adolescentes.</p>
       </div>
 
-      <div class="content">
-        <ion-text>Tu aplicación movíl para evaluar la salud mental en adolescentes.</ion-text>
-      </div>
-
-      <ion-card>
+      <!-- 🔹 Historial de Pacientes -->
+      <ion-card class="animated-card" (click)="redirect('/home/history-paciente')">
         <ion-item lines="none">
-          <ion-icon slot="start" name="people-sharp"></ion-icon>
+          <ion-icon slot="start" name="people-sharp" class="icon-section"></ion-icon>
           <ion-label>Historial de Pacientes</ion-label>
-          <ion-button slot="end" shape="round" (click)="redirect('/home/history-paciente')">
+          <ion-button slot="end" fill="clear">
             <ion-icon slot="icon-only" name="caret-forward-sharp"></ion-icon>
           </ion-button>
         </ion-item>
       </ion-card>
 
-      <ion-card>
+      <!-- 🔹 Precisión del Sistema -->
+      <ion-card class="animated-card">
         <ion-item lines="none">
-          <ion-icon slot="start" name="pulse-sharp"></ion-icon>
-          <ion-label>Presición del Sistema</ion-label>
-          <ion-chip slot="end" color="secondary">{{confianza()}}%</ion-chip>
+          <ion-icon slot="start" name="pulse-sharp" class="icon-section"></ion-icon>
+          <ion-label>Precisión del Sistema</ion-label>
+          <ion-chip slot="end" color="secondary" class="pulse-chip">
+            {{ confianza() }}%
+          </ion-chip>
         </ion-item>
+        <div class="progress-container">
+          <div class="progress-bar" [style.width.%]="confianza()"></div>
+        </div>
       </ion-card>
 
-      <ion-card>
+      <!-- 🔹 Rendimiento por grado -->
+      <ion-card class="animated-card">
         <ion-item lines="none">
-          <ion-icon slot="start" name="analytics-sharp"></ion-icon>
+          <ion-icon slot="start" name="analytics-sharp" class="icon-section"></ion-icon>
           <ion-label>Rendimiento</ion-label>
         </ion-item>
+
         @for (item of listGrado(); track $index) {
-        <ion-item>
-          <ion-label>{{item.grado}}</ion-label>
-          <ion-chip slot="end" [color]="getColor(item.grado)">{{item.precision}}%</ion-chip>
-        </ion-item>
-        }@empty {
-        <ion-item>
-          <ion-label style="text-align: center;">No cuentas con analisis.</ion-label>
-        </ion-item>
+          <ion-item class="grade-item">
+            <ion-label>{{ item.grado }}</ion-label>
+            <ion-chip slot="end" [color]="getColor(item.grado)" class="fade-in-chip">
+              {{ item.precision }}%
+            </ion-chip>
+          </ion-item>
+        }
+        @empty {
+          <ion-item>
+            <ion-label style="text-align: center;">No cuentas con análisis.</ion-label>
+          </ion-item>
         }
       </ion-card>
-
     </div>
   </app-card>
 </ion-content>
+

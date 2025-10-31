@@ -9,3 +9,30 @@ form {
     margin-top: 10px;
   }
 }
+
+/* Estilos para el campo de contraseña con el ícono 👁️ */
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  ion-input {
+    width: 100%;
+  }
+
+  .toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    color: var(--ion-color-medium);
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.2s ease;
+  }
+
+  .toggle-password:hover {
+    color: var(--ion-color-primary);
+  }
+}

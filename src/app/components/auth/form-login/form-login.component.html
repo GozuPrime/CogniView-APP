@@ -1,7 +1,30 @@
 <form enctype="multipart/form-data" [formGroup]="formulario" method="post" (submit)="submitForm()">
-  <ion-input label="Correo Electronico" label-placement="floating" fill="solid" formControlName="email"
-    placeholder="Correo Electronico ..."></ion-input>
-  <ion-input label="Contraseña" label-placement="floating" fill="solid" formControlName="password"
-    placeholder="Contraseña ..."></ion-input>
+
+  <ion-input
+    label="Correo Electrónico"
+    label-placement="floating"
+    fill="solid"
+    formControlName="email"
+    placeholder="Correo Electrónico...">
+  </ion-input>
+
+  <div class="password-container">
+    <ion-input
+      label="Contraseña"
+      label-placement="floating"
+      fill="solid"
+      [type]="showPassword ? 'text' : 'password'"
+      formControlName="password"
+      placeholder="Contraseña...">
+    </ion-input>
+
+    <ion-icon
+      class="toggle-password"
+      [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"
+      (click)="togglePassword()">
+    </ion-icon>
+  </div>
+
   <app-button type="submit" name="Ingresar" class="btn-auth" [differentColor]="false" />
 </form>
+
